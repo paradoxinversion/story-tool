@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const Base = require("../classes/Base");
+const Base = require("../../../src/classes/Base");
 describe("Base", function() {
   describe("setName", function() {
     context("When passed a string", function() {

@@ -9,8 +9,8 @@ class Thing extends Base {
   setSpecialProperties(newSpecialProperties) {
     try {
       if (typeof newSpecialProperties === "string") {
-        this.SpecialProperties = newSpecialProperties;
-        return this.SpecialProperties;
+        this.specialProperties = newSpecialProperties;
+        return this.specialProperties;
       } else {
         const error = new Error(
           `setSpecialProperties:: Expected a string but got a(n) ${typeof newSpecialProperties} instead.`
@@ -20,9 +20,6 @@ class Thing extends Base {
     } catch (e) {
       throw e;
     }
-  }
-  setSpecialProperties(specialProperties) {
-    this.specialProperties = specialProperties;
   }
 }
 

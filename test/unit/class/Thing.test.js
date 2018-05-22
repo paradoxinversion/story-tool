@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const Thing = require("../classes/Thing");
+const Thing = require("../../../src/classes/Thing");
 describe("Thing", function() {
   // before(function(){
 
