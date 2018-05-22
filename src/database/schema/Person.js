@@ -6,6 +6,6 @@ const PersonSchema = Schema({
   age: Number
 });
 
-PersonSchema.methods.returnPersonInstance(function(err) {
+PersonSchema.methods.returnPersonInstance = function(err) {
   return new Person(this.name);
-});
+};
