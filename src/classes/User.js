@@ -1,7 +1,7 @@
 class User {
-  constructor(username, stories) {
-    this.username = username;
-    this.stories = stories;
+  constructor(user) {
+    this.username = user.username;
+    this.stories = user.stories;
   }
 }
 

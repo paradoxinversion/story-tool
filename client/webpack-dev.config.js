@@ -37,7 +37,8 @@ module.exports = {
     publicPath: "http://localhost:3000/dist",
     proxy: {
       "/api": "http://localhost:3001"
-    }
+    },
+    historyApiFallback: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

@@ -14,9 +14,10 @@ const userSchema = Schema({
 });
 
 userSchema.methods.returnUserInstance = function(err) {
-  return new _User(this.username, this.stories);
+  return new _User(this);
 };
-userSchema.methods.verifyPassword = async function(err, password) {
+userSchema.methods.verifyPassword = async function(password) {
+  console.log(password, this.password);
   return await bcrypt.compare(password, this.password);
 };
 const User = mongoose.model("User", userSchema);
