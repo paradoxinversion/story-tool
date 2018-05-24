@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Component, Fragment, Link } from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
+import NewStory from "./NewStory/NewStory";
+
 class Tool extends Component {
   constructor(props) {
     super(props);
@@ -9,11 +11,18 @@ class Tool extends Component {
     const { match } = this.props;
     return (
       <Fragment>
+        {/* <div>
+          <Link to="/tool/new-story">New Story</Link>
+        </div> */}
+        <Route
+          // exact
+          // path={`${match.url}/dashboard`}
+          render={() => <Dashboard {...this.props} />}
+        />
         <Switch>
           <Route
-            exact
-            path={`${match.url}/dashboard`}
-            render={() => <Dashboard {...this.props} />}
+            path={`${match.url}/new-story`}
+            render={() => <NewStory {...this.props} />}
           />
         </Switch>
       </Fragment>
@@ -21,4 +30,4 @@ class Tool extends Component {
   }
 }
 
-export default Tool;
+export default withRouter(Tool);
