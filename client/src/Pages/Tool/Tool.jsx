@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
-import PrivateRoute from "../../Components/PrivateRoute/PrivateRoute";
-class Auth extends Component {
+class Tool extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,11 +10,15 @@ class Auth extends Component {
     return (
       <Fragment>
         <Switch>
-          <Route exact path={`${match.url}/signup`} component={Dashboard} />
+          <Route
+            exact
+            path={`${match.url}/dashboard`}
+            render={() => <Dashboard {...this.props} />}
+          />
         </Switch>
       </Fragment>
     );
   }
 }
 
-export default Auth;
+export default Tool;

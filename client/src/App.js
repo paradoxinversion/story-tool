@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Tool from "./Pages/Tool/Tool";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import "normalize.css";
 import "./App.css";
 
@@ -10,13 +11,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      user: null
     };
     this.setAuthentication = this.setAuthentication.bind(this);
   }
-  setAuthentication(authenticationStatus) {
+  setAuthentication(authenticationStatus, user = null) {
     this.setState({
-      isAuthenticated: authenticationStatus
+      isAuthenticated: authenticationStatus,
+      user: user
     });
   }
   render() {
@@ -39,10 +42,14 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route
             path="/auth"
-            setAuthentication={this.setAuthentication}
-            component={Auth}
+            render={() => <Auth setAuthentication={this.setAuthentication} />}
           />
-          <Route path="/tool" component={Tool} />
+          <PrivateRoute
+            path="/tool"
+            authenticated={this.state.isAuthenticated}
+            user={this.state.user}
+            component={Tool}
+          />
         </div>
       </Router>
     );

@@ -1,5 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter
+} from "react-router-dom";
 import SignUp from "./SignUp/SignUp";
 import LogIn from "./LogIn/LogIn";
 class Auth extends Component {
@@ -12,11 +17,14 @@ class Auth extends Component {
       <Fragment>
         <Switch>
           <Route exact path={`${match.url}/signup`} component={SignUp} />
-          <Route path={`${match.url}/login`} component={LogIn} {...rest} />
+          <Route
+            path={`${match.url}/login`}
+            render={() => <LogIn {...this.props} />}
+          />
         </Switch>
       </Fragment>
     );
   }
 }
 
-export default Auth;
+export default withRouter(Auth);
