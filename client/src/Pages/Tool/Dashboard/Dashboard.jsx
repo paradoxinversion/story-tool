@@ -4,11 +4,12 @@ import UserStories from "../../../Components/UserStories/UserStories";
 class Dashboard extends Component {
   render() {
     return (
-      <div>
+      <div className="dashboard">
         {" "}
         <p>Hello, {this.props.user.username}</p>
         <Link to="/tool/new-story">New Story </Link>
-        <UserStories stories={this.props.user.stories} />
+        <Link to="/tool/stories">Your Stories </Link>
+        {/* <UserStories stories={this.props.user.stories} /> */}
       </div>
     );
   }

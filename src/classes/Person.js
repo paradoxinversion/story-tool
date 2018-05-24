@@ -1,8 +1,8 @@
 "use strict";
 const Base = require("./Base");
 class Person extends Base {
-  constructor(name) {
-    super(name);
+  constructor(name, id) {
+    super(name, id);
     this.age = 18;
   }
 

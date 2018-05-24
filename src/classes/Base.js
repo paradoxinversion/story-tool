@@ -1,9 +1,10 @@
 "use strict";
 
 class Base {
-  constructor(name) {
+  constructor(name, id) {
     this.name = name;
     this.notes = "";
+    this.id = id;
   }
 
   setName(newName) {

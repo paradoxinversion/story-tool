@@ -14,7 +14,7 @@ const userSchema = Schema({
 });
 
 userSchema.methods.returnUserInstance = function(err) {
-  return new _User(this);
+  return new _User(this.username, this._id, this);
 };
 userSchema.methods.verifyPassword = async function(password) {
   console.log(password, this.password);

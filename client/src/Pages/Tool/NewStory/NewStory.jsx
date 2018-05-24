@@ -26,7 +26,8 @@ class NewStory extends Component {
     event.preventDefault();
     const result = await axios.post("http://localhost:3001/api/stories/new", {
       title: this.state.title,
-      synopsis: this.state.synopsis
+      synopsis: this.state.synopsis,
+      userId: this.props.user.id
     });
     console.log(result);
     if (result.status === 200) {
@@ -40,7 +41,7 @@ class NewStory extends Component {
           <p>New Story</p>
           <label htmlFor="title">Title</label>
           <input
-            name="name"
+            name="title"
             type="text"
             id="title"
             autoComplete="title"

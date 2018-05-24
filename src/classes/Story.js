@@ -1,8 +1,8 @@
 "use strict";
 const Base = require("./Base");
 class Story extends Base {
-  constructor(name) {
-    super(name);
+  constructor(name, id) {
+    super(name, id);
     this.characters = [];
     this.locations = [];
     this.specialObjects = [];

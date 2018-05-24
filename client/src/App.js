@@ -12,9 +12,11 @@ class App extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-      user: null
+      user: null,
+      story: null
     };
     this.setAuthentication = this.setAuthentication.bind(this);
+    this.setStory = this.setStory.bind(this);
   }
   setAuthentication(authenticationStatus, user = null) {
     this.setState({
@@ -22,22 +24,31 @@ class App extends Component {
       user: user
     });
   }
+
+  setStory(story) {
+    this.setState({
+      story
+    });
+  }
   render() {
     return (
       <Router>
         <div className="App">
-          <h1> Story Tool</h1>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/auth/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/auth/login">Log In</Link>
-            </li>
-          </ul>
+          <header className="main-header">
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/auth/signup">Sign Up</Link>
+                </li>
+                <li>
+                  <Link to="/auth/login">Log In</Link>
+                </li>
+              </ul>
+            </nav>
+          </header>
 
           <Route exact path="/" component={Home} />
           <Route
@@ -48,6 +59,8 @@ class App extends Component {
             path="/tool"
             authenticated={this.state.isAuthenticated}
             user={this.state.user}
+            setStory={this.setStory}
+            story={this.state.story}
             component={Tool}
           />
         </div>
