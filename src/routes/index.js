@@ -15,8 +15,11 @@ router
 
 router.route("/api/stories/:storyId").get(storyController.getStoryByStoryId);
 router
-  .route("/api/stories/:storyId/new-story")
-  .get(storyController.createNewStorySection);
+  .route("/api/stories/:storyId/new-section")
+  .post(storyController.createNewStorySection);
+router
+  .route("/api/stories/:storyId/get-sections")
+  .get(storyController.getAllStorySections);
 router.route("/api/stories/new").post(storyController.addNewStory);
 
 module.exports = router;

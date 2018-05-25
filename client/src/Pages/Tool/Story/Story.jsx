@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
+import StoryParts from "../../../Components/StoryParts/StoryParts";
 import axios from "axios";
 class Story extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class Story extends Component {
       return (
         <div className="story">
           {/* <p>Story: {this.state.story.name}</p> */}
+          <p>Parts</p>
           <p>Characters</p>
           <p>Locations</p>
           <p>Items/Objects</p>
@@ -39,10 +40,14 @@ class Story extends Component {
     console.log(this.props);
 
     return (
-      <div>
+      <section className="workspace-container">
         {this.props.story ? (
           <div className="story">
             <p>Story: {this.props.story.title}</p>
+            <StoryParts
+              setMode={this.props.setMode}
+              storyParts={this.props.story.sections}
+            />
             {/* <Link to="/tool/story/:id/new-section" */}
             <p>Synopsis: {this.props.story.synopsis}</p>
             <p>Characters</p>
@@ -55,7 +60,7 @@ class Story extends Component {
             <p> Story loading... </p>
           </div>
         )}
-      </div>
+      </section>
     );
   }
 }

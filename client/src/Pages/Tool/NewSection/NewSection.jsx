@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
-class NewCharacter extends Component {
+import "./NewSection.css";
+class NewSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +11,7 @@ class NewCharacter extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleNewCharacter = this.handleNewCharacter.bind(this);
+    this.handleNewSection = this.handleNewSection.bind(this);
   }
 
   handleInputChange(event) {
@@ -22,10 +23,10 @@ class NewCharacter extends Component {
       [name]: value
     });
   }
-  async handleNewCharacter(event) {
+  async handleNewSection(event) {
     event.preventDefault();
     const result = await axios.post(
-      `http://localhost:3001/api/stories/${this.props.story._id}/new-story`,
+      `http://localhost:3001/api/stories/${this.props.story._id}/new-section`,
       {
         name: this.state.name,
         content: this.state.content,
@@ -34,39 +35,42 @@ class NewCharacter extends Component {
     );
     console.log(result);
 
-    if (result.status === 200) {
-      this.props.history.push("/tool/dashboard");
+    if (result.status == 200) {
+      this.props.setMode("story-overview");
     }
   }
   render() {
     return (
       <Fragment>
-        <form>
-          <p>New Section</p>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            id="name"
-            required={true}
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="content">content</label>
-          <input
-            name="content"
-            type="text"
-            id="content"
-            required={true}
-            onChange={this.handleInputChange}
-          />
-          <button type="submit" onClick={this.handleNewCharacter}>
-            {" "}
-            Create{" "}
-          </button>
-        </form>
+        <section className="workspace-container">
+          <form className="vertical-form full-width">
+            <p>New Section</p>
+            <label htmlFor="name">Name</label>
+            <input
+              name="name"
+              type="text"
+              id="name"
+              required={true}
+              onChange={this.handleInputChange}
+            />
+            <label htmlFor="content">content</label>
+            <input
+              className="grow"
+              name="content"
+              type="textarea"
+              id="content"
+              required={true}
+              onChange={this.handleInputChange}
+            />
+            <button type="submit" onClick={this.handleNewSection}>
+              {" "}
+              Create{" "}
+            </button>
+          </form>
+        </section>
       </Fragment>
     );
   }
 }
 
-export default withRouter(NewCharacter);
+export default withRouter(NewSection);

@@ -1,6 +1,7 @@
 const addStory = require("../../database/actions/addStory");
 const getStoryById = require("../../database/actions/getStoryById");
 const addStorySection = require("../../database/actions/addStorySection");
+const getStorySections = require("../../database/actions/getStorySections");
 const addNewStory = async (req, res) => {
   try {
     const newStory = await addStory(
@@ -21,7 +22,7 @@ const getStoryByStoryId = async (req, res) => {
   try {
     const story = await getStoryById(req.params.storyId);
     res.status(200).json({
-      message: "Story added",
+      message: "Found story",
       story
     });
   } catch (e) {
@@ -32,14 +33,31 @@ const getStoryByStoryId = async (req, res) => {
 
 const createNewStorySection = async (req, res) => {
   try {
-    const story = await addStorySection(
+    const section = await addStorySection(
       req.body.name,
       req.body.content,
       req.params.storyId
     );
     res.status(200).json({
-      message: "Story added",
-      story
+      message: "Story section created",
+      section
+    });
+  } catch (e) {
+    console.log(e);
+    res.json(e);
+  }
+};
+
+const getAllStorySections = async (req, res) => {
+  try {
+    const sections = await getStorySections(
+      req.body.name,
+      req.body.content,
+      req.params.storyId
+    );
+    res.status(200).json({
+      message: "Got story sections",
+      sections
     });
   } catch (e) {
     console.log(e);
@@ -49,5 +67,6 @@ const createNewStorySection = async (req, res) => {
 module.exports = {
   addNewStory,
   getStoryByStoryId,
-  createNewStorySection
+  createNewStorySection,
+  getAllStorySections
 };

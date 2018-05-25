@@ -27,6 +27,13 @@ class Dashboard extends Component {
           <button
             className="dashboard__button"
             onClick={() => {
+              this.props.setMode("story-overview");
+            }}>
+            Story
+          </button>
+          <button
+            className="dashboard__button"
+            onClick={() => {
               this.props.setMode("new-character");
             }}>
             New Character

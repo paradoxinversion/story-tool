@@ -4,6 +4,23 @@
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
 }
+
+/* Forms */
+
+.vertical-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Basic Modifiers */
+.full-width {
+  width: 100%;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
 .main-header {
   border-bottom: 2px solid black;
 }
@@ -29,7 +46,6 @@
   border-right: 1px solid lightgrey;
   background-color: #f2f2f2;
   width: 150px;
-  margin-right: 1rem;
 }
 
 .dashboard__button {
@@ -46,4 +62,12 @@
   background-color: white;
   color: black;
   border-bottom: 1px solid red;
+}
+.dashboard__control-group {
+  margin-bottom: 1rem;
+}
+.workspace-container {
+  display: flex;
+  margin: 1rem;
+  width: 100%;
 }
