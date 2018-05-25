@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Tool from "./Pages/Tool/Tool";
@@ -30,26 +31,33 @@ class App extends Component {
       story
     });
   }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <header className="main-header">
+          {/* <header className="main-header">
             <nav>
-              <ul>
+              <ul className="main-header__nav-list">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link className="main-header__nav-link" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/auth/signup">Sign Up</Link>
+                  <Link className="main-header__nav-link" to="/auth/signup">
+                    Sign Up
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/auth/login">Log In</Link>
+                  <Link className="main-header__nav-link" to="/auth/login">
+                    Log In
+                  </Link>
                 </li>
               </ul>
             </nav>
-          </header>
-
+          </header> */}
+          <Header authenticated={this.state.isAuthenticated} />
           <Route exact path="/" component={Home} />
           <Route
             path="/auth"

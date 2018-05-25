@@ -7,9 +7,52 @@ class Dashboard extends Component {
       <div className="dashboard">
         {" "}
         <p>Hello, {this.props.user.username}</p>
-        <Link to="/tool/new-story">New Story </Link>
-        <Link to="/tool/stories">Your Stories </Link>
-        {/* <UserStories stories={this.props.user.stories} /> */}
+        <div className="dashboard__control-group">
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("stories-list");
+            }}>
+            Stories
+          </button>
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("new-story");
+            }}>
+            New Story
+          </button>
+        </div>
+        <div className="dashboard__control-group">
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("new-character");
+            }}>
+            New Character
+          </button>
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("new-location");
+            }}>
+            New Location
+          </button>
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("new-section");
+            }}>
+            New Section
+          </button>
+          <button
+            className="dashboard__button"
+            onClick={() => {
+              this.props.setMode("new-object");
+            }}>
+            New Object
+          </button>
+        </div>
       </div>
     );
   }

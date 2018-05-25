@@ -14,6 +14,9 @@ router
   .post(passport.authenticate("local"), auth.loggedIn);
 
 router.route("/api/stories/:storyId").get(storyController.getStoryByStoryId);
+router
+  .route("/api/stories/:storyId/new-story")
+  .get(storyController.createNewStorySection);
 router.route("/api/stories/new").post(storyController.addNewStory);
 
 module.exports = router;

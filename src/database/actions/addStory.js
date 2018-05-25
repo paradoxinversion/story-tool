@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const Story = require("../schema/Story");
 const User = require("../schema/User");
 const addStory = async (title, synopsis, userId) => {

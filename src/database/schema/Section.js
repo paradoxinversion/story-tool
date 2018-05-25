@@ -4,7 +4,11 @@ const Section = require("../../classes/Section");
 const sectionSchema = Schema({
   name: String,
   notes: String,
-  content: String
+  content: String,
+  number: {
+    type: Number,
+    required: true
+  }
 });
 
 sectionSchema.methods.returnStoryInstance = function(err) {

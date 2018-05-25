@@ -1,5 +1,6 @@
 const addStory = require("../../database/actions/addStory");
 const getStoryById = require("../../database/actions/getStoryById");
+const addStorySection = require("../../database/actions/addStorySection");
 const addNewStory = async (req, res) => {
   try {
     const newStory = await addStory(
@@ -31,7 +32,11 @@ const getStoryByStoryId = async (req, res) => {
 
 const createNewStorySection = async (req, res) => {
   try {
-    const story = await getStoryById(req.params.storyId);
+    const story = await addStorySection(
+      req.body.name,
+      req.body.content,
+      req.params.storyId
+    );
     res.status(200).json({
       message: "Story added",
       story
@@ -43,5 +48,6 @@ const createNewStorySection = async (req, res) => {
 };
 module.exports = {
   addNewStory,
-  getStoryByStoryId
+  getStoryByStoryId,
+  createNewStorySection
 };

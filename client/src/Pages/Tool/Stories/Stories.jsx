@@ -6,7 +6,13 @@ const Stories = props => {
   return (
     <div>
       <p>Stories</p>
-      <UserStories stories={props.user.stories} />
+      <UserStories
+        setMode={props.setMode}
+        setStory={props.setStory}
+        setWorkingId={props.setWorkingId}
+        workingId={props.workingId}
+        stories={props.user.stories}
+      />
     </div>
   );
 };
