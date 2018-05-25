@@ -12,7 +12,7 @@ const UserStories = props => {
             key={story._id}
             onClick={() => {
               props.setStory(story);
-              props.setWorkingId(story._id);
+              props.setWorkingStoryId(story._id);
               props.setMode("story-overview");
             }}>
             {story.title}

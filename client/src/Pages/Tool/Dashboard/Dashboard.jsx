@@ -35,7 +35,10 @@ class Dashboard extends Component {
             text="Sections"
             className="dashboard__button"
             setMode={this.props.setMode}
-            subButtons={[{ text: "New Section", mode: "new-section" }]}
+            subButtons={[
+              { text: "Story Sections", mode: "story-sections" },
+              { text: "New Section", mode: "new-section" }
+            ]}
           />
           <DashboardButton
             text="Characters"

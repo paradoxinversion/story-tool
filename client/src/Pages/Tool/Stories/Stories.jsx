@@ -9,8 +9,9 @@ const Stories = props => {
       <UserStories
         setMode={props.setMode}
         setStory={props.setStory}
-        setWorkingId={props.setWorkingId}
-        workingId={props.workingId}
+        setWorkingStoryId={props.setWorkingStoryId}
+        workingStoryId={props.workingStoryId}
+        workingSectionId={props.workingSectionId}
         stories={props.user.stories}
       />
     </div>

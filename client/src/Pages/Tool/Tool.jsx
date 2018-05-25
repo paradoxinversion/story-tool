@@ -7,6 +7,8 @@ import Story from "./Story/Story";
 import NewCharacter from "./NewCharacter/NewCharacter";
 import NewLocation from "./NewLocation/NewLocation";
 import NewObject from "./NewObject/NewObject";
+import StorySections from "./StorySections/StorySections";
+import StorySection from "./StorySection/StorySection";
 import NewSection from "./NewSection/NewSection";
 
 const toolComponents = {
@@ -16,6 +18,8 @@ const toolComponents = {
   ["new-character"]: NewCharacter,
   ["new-location"]: NewLocation,
   ["new-object"]: NewObject,
+  ["story-sections"]: StorySections,
+  ["view-section"]: StorySection,
   ["new-section"]: NewSection
 };
 class Tool extends Component {
@@ -23,20 +27,27 @@ class Tool extends Component {
     super(props);
     this.state = {
       mode: "stories-list",
-      workingId: ""
+      workingStoryId: "",
+      workingSectionId: ""
     };
     this.setMode = this.setMode.bind(this);
-    this.setWorkingId = this.setWorkingId.bind(this);
+    this.setWorkingStoryId = this.setWorkingStoryId.bind(this);
+    this.setWorkingSectionId = this.setWorkingSectionId.bind(this);
   }
-  setMode(mode) {
-    this.setState({
+  async setMode(mode) {
+    await this.setState({
       mode
     });
   }
 
-  setWorkingId(storyId) {
-    this.setState({
-      workingId: storyId
+  async setWorkingStoryId(storyId) {
+    await this.setState({
+      workingStoryId: storyId
+    });
+  }
+  async setWorkingSectionId(sectionId) {
+    await this.setState({
+      workingSectionId: sectionId
     });
   }
   render() {
@@ -46,8 +57,10 @@ class Tool extends Component {
       <div className="horizontal-container">
         <Dashboard setMode={this.setMode} {...this.props} />
         <CurrentWorkspace
-          setWorkingId={this.setWorkingId}
-          workingId={this.state.workingId}
+          setWorkingStoryId={this.setWorkingStoryId}
+          setWorkingSectionId={this.setWorkingSectionId}
+          workingStoryId={this.state.workingStoryId}
+          workingSectionId={this.state.workingSectionId}
           setMode={this.setMode}
           {...this.props}
         />

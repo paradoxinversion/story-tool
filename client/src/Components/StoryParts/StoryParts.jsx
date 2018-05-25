@@ -7,13 +7,14 @@ const StoryParts = props => {
   } else {
     return (
       <div>
-        {props.storyParts.map(storyPart => (
+        {props.storyParts.map(section => (
           <button
-            key={storyPart._id}
+            key={section._id}
             onClick={() => {
-              props.setMode("story-overview");
+              props.setWorkingSectionId(section._id);
+              props.setMode("view-section");
             }}>
-            {storyPart.name}
+            {section.name}
           </button>
         ))}
       </div>
