@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon ./src/server.js",
+    "start-client-dev": "node start-client.js",
+    "start-server-dev": "nodemon ./src/server.js --watch src/ ",
+    "start": "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive"
   },
   "keywords": [],
@@ -21,6 +23,7 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.5.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",

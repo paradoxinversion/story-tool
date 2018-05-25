@@ -4,7 +4,8 @@ const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = {
   mode: "development",
-  entry: ["babel-polyfill", "./src/index.js"],
+  entry: { main: ["babel-polyfill", "./src/index.js"] },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -31,17 +32,22 @@ module.exports = {
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    publicPath: bundlePath,
+    path: path.resolve(__dirname, "dist/"),
+    publicPath: "/dist/",
     filename: "bundle.js"
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "public/"),
     port: 3000,
-    publicPath: "http://localhost:3000/dist",
+    publicPath: "http://localhost:3000/dist/",
     proxy: {
       "/api": "http://localhost:3001"
     },
+    hotOnly: true,
     historyApiFallback: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

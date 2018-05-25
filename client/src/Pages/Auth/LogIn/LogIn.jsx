@@ -40,8 +40,8 @@ class LogIn extends Component {
     return (
       <Fragment>
         <form>
-          <p> Log In</p>
-          <label htmlFor="username">Username</label>
+          <p>Log In</p>
+          <label htmlFor="username">Usernam</label>
           <input
             name="name"
             type="text"

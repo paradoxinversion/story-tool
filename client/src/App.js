@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { hot } from "react-hot-loader";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
@@ -36,27 +37,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <header className="main-header">
-            <nav>
-              <ul className="main-header__nav-list">
-                <li>
-                  <Link className="main-header__nav-link" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link className="main-header__nav-link" to="/auth/signup">
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link className="main-header__nav-link" to="/auth/login">
-                    Log In
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </header> */}
           <Header authenticated={this.state.isAuthenticated} />
           <Route exact path="/" component={Home} />
           <Route
@@ -77,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
