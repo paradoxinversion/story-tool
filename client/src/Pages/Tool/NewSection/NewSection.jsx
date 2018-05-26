@@ -54,10 +54,9 @@ class NewSection extends Component {
               onChange={this.handleInputChange}
             />
             <label htmlFor="content">content</label>
-            <input
-              className="grow"
+            <textarea
+              className="grow workspace-writing-area"
               name="content"
-              type="textarea"
               id="content"
               required={true}
               onChange={this.handleInputChange}

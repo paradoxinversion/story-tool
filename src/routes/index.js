@@ -25,7 +25,9 @@ router
 
 router
   .route("/api/stories/:storyId/:sectionId")
-  .get(storyController.getSingleStorySection);
+  .get(storyController.getSingleStorySection)
+  .put(storyController.editStorySection);
+
 router.route("/api/stories/new").post(storyController.addNewStory);
 
 module.exports = router;

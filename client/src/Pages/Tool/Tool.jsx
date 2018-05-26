@@ -55,7 +55,12 @@ class Tool extends Component {
     const { match } = this.props;
     return (
       <div className="horizontal-container">
-        <Dashboard setMode={this.setMode} {...this.props} />
+        <Dashboard
+          workingStoryId={this.state.workingStoryId}
+          workingSectionId={this.state.workingSectionId}
+          setMode={this.setMode}
+          {...this.props}
+        />
         <CurrentWorkspace
           setWorkingStoryId={this.setWorkingStoryId}
           setWorkingSectionId={this.setWorkingSectionId}

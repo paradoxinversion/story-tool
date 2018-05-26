@@ -9,7 +9,9 @@
   "scripts": {
     "start-client-dev": "node start-client.js",
     "start-server-dev": "nodemon ./src/server.js --watch src/ ",
-    "start": "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
+    "build-client": "cd client && npm run build",
+    "start":
+      "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive"
   },
   "keywords": [],

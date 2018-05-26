@@ -3,6 +3,7 @@ const getStoryById = require("../../database/actions/getStoryById");
 const addStorySection = require("../../database/actions/addStorySection");
 const getStorySections = require("../../database/actions/getStorySections");
 const getStorySection = require("../../database/actions/getStorySection");
+const _editStorySection = require("../../database/actions/editStorySection");
 const addNewStory = async (req, res) => {
   try {
     const newStory = await addStory(
@@ -76,10 +77,28 @@ const getSingleStorySection = async (req, res) => {
     res.json(e);
   }
 };
+
+const editStorySection = async (req, res) => {
+  try {
+    const section = await _editStorySection(
+      req.body.name,
+      req.body.content,
+      req.params.sectionId
+    );
+    res.status(200).json({
+      message: "Edited story section",
+      section
+    });
+  } catch (e) {
+    console.log(e);
+    res.json(e);
+  }
+};
 module.exports = {
   addNewStory,
   getStoryByStoryId,
   createNewStorySection,
   getAllStorySections,
-  getSingleStorySection
+  getSingleStorySection,
+  editStorySection
 };

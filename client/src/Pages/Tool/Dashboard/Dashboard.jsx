@@ -24,41 +24,43 @@ class Dashboard extends Component {
             New Story
           </button>
         </div>
-        <div className="dashboard__control-group">
-          <DashboardButton
-            text="Story"
-            className="dashboard__button"
-            setMode={this.props.setMode}
-            subButtons={[{ text: "Overview", mode: "story-overview" }]}
-          />
-          <DashboardButton
-            text="Sections"
-            className="dashboard__button"
-            setMode={this.props.setMode}
-            subButtons={[
-              { text: "Story Sections", mode: "story-sections" },
-              { text: "New Section", mode: "new-section" }
-            ]}
-          />
-          <DashboardButton
-            text="Characters"
-            className="dashboard__button"
-            setMode={this.props.setMode}
-            subButtons={[{ text: "New Character", mode: "new-character" }]}
-          />
-          <DashboardButton
-            text="Locations"
-            className="dashboard__button"
-            setMode={this.props.setMode}
-            subButtons={[{ text: "New Location", mode: "new-location" }]}
-          />
-          <DashboardButton
-            text="Items/Objects"
-            className="dashboard__button"
-            setMode={this.props.setMode}
-            subButtons={[{ text: "New Object", mode: "new-object" }]}
-          />
-        </div>
+        {this.props.workingStoryId ? (
+          <div className="dashboard__control-group">
+            <DashboardButton
+              text="Story"
+              className="dashboard__button"
+              setMode={this.props.setMode}
+              subButtons={[{ text: "Overview", mode: "story-overview" }]}
+            />
+            <DashboardButton
+              text="Sections"
+              className="dashboard__button"
+              setMode={this.props.setMode}
+              subButtons={[
+                { text: "Story Sections", mode: "story-sections" },
+                { text: "New Section", mode: "new-section" }
+              ]}
+            />
+            <DashboardButton
+              text="Characters"
+              className="dashboard__button"
+              setMode={this.props.setMode}
+              subButtons={[{ text: "New Character", mode: "new-character" }]}
+            />
+            <DashboardButton
+              text="Locations"
+              className="dashboard__button"
+              setMode={this.props.setMode}
+              subButtons={[{ text: "New Location", mode: "new-location" }]}
+            />
+            <DashboardButton
+              text="Items/Objects"
+              className="dashboard__button"
+              setMode={this.props.setMode}
+              subButtons={[{ text: "New Object", mode: "new-object" }]}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
