@@ -8,6 +8,10 @@ const sectionSchema = Schema({
   number: {
     type: Number,
     required: true
+  },
+  story: {
+    type: Schema.Types.ObjectId,
+    ref: "Story"
   }
 });
 

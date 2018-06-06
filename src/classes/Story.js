@@ -6,6 +6,7 @@ class Story extends Base {
     this.characters = [];
     this.locations = [];
     this.specialObjects = [];
+    this.sections = [];
   }
 
   /*

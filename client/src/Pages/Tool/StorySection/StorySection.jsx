@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import deleteStorySection from "../../../toolCommands/section/deleteStorySection";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
 import axios from "axios";
 class StorySection extends Component {
@@ -18,22 +19,34 @@ class StorySection extends Component {
 
   async getSectionData() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStoryId}/${
-        this.props.workingSectionId
+      `http://localhost:3001/api/stories/${this.props.workingStory._id}/${
+        this.props.workingSection._id
       }`
     );
+
     if (result.status === 200) {
-      this.setState({ section: result.data.section });
+      this.props.setWorkingSection(result.data.section);
+
       this.setState({
-        name: result.data.section.name,
-        content: result.data.section.content
+        section: this.props.workingSection,
+        name: this.props.workingSection.name,
+        content: this.props.workingSection.content
       });
     }
   }
 
   async componentDidMount() {
     await this.getSectionData();
+    this.setState({
+      section: this.props.workingSection,
+      name: this.props.workingSection.name,
+      content: this.props.workingSection.content
+    });
   }
+  componentWillUnmount() {
+    this.props.setWorkingSection(null);
+  }
+
   toggleEditMode() {
     if (this.state.editing === false) {
       this.setState({
@@ -45,6 +58,7 @@ class StorySection extends Component {
       });
     }
   }
+
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -54,18 +68,18 @@ class StorySection extends Component {
       [name]: value
     });
   }
+
   async handleEditSection(event) {
     event.preventDefault();
     const result = await axios.put(
       `http://localhost:3001/api/stories/${this.props.story._id}/${
-        this.props.workingSectionId
+        this.props.workingSection._id
       }`,
       {
         name: this.state.name,
         content: this.state.content
       }
     );
-    console.log(result);
 
     if (result.status == 200) {
       this.setState({
@@ -74,6 +88,7 @@ class StorySection extends Component {
       await this.getSectionData();
     }
   }
+
   renderEditForm() {
     if (!this.state.editing) {
       return (
@@ -81,7 +96,25 @@ class StorySection extends Component {
           {this.state.section ? (
             <div className="story">
               <button onClick={this.toggleEditMode}>Edit Part</button>
-              <button>Delete Part (eventually)</button>
+              <button
+                onClick={async () => {
+                  if (
+                    window.confirm("Are you sure you wish to delete this item?")
+                  ) {
+                    const result = await deleteStorySection(
+                      this.props.story._id,
+                      this.state.section._id
+                    );
+
+                    if (result.status === 200) {
+                      console.log("yay");
+                      this.props.setWorkingSectionId("");
+                      this.props.setMode("story-sections");
+                    }
+                  }
+                }}>
+                Delete Part
+              </button>
               <p>{this.state.section.name}</p>
               <p>{this.state.section.content}</p>
             </div>
@@ -124,22 +157,7 @@ class StorySection extends Component {
     }
   }
   render() {
-    console.log(this.props);
-
     return (
-      // <section className="workspace-container">
-      //   {this.state.section ? (
-      //     <div className="story">
-      //       <button>Delete Part (eventually)</button>
-      //       <p>{this.state.section.name}</p>
-      //       <p>{this.state.section.content}</p>
-      //     </div>
-      //   ) : (
-      //     <div>
-      //       <p> Section loading... </p>
-      //     </div>
-      //   )}
-      // </section>
       <section className="workspace-container">{this.renderEditForm()}</section>
     );
   }

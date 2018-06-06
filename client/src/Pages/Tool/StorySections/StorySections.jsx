@@ -6,17 +6,31 @@ class StorySections extends Component {
   constructor(props) {
     super(props);
   }
+  async getSections() {
+    const result = await axios.get(
+      `http://localhost:3001/api/stories/${
+        this.props.workingStory._id
+      }/sections`
+    );
+    console.log(result);
+    if (result.status === 200) {
+      this.props.setWorkingSections(result.data.sections);
+    }
+  }
 
+  async componentWillMount() {
+    await this.getSections();
+  }
   render() {
-    console.log(this.props);
-
     return (
       <section className="workspace-container">
-        {this.props.story ? (
+        {this.props.workingSections ? (
           <StoryParts
-            setWorkingSectionId={this.props.setWorkingSectionId}
+            setWorkingSection={this.props.setWorkingSection}
+            setWorkingSections={this.props.setWorkingSections}
             setMode={this.props.setMode}
-            storyParts={this.props.story.sections}
+            workingStory={this.props.workingStory}
+            storyParts={this.props.workingSections}
           />
         ) : (
           <div>

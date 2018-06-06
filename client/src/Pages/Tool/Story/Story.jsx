@@ -8,7 +8,7 @@ class Story extends Component {
 
   async componentDidMount() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStoryId}`
+      `http://localhost:3001/api/stories/${this.props.workingStory._id}`
     );
     if (result.status === 200) {
       this.props.setStory(result.data.story);

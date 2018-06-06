@@ -7,26 +7,32 @@ const storyController = require("./api/story");
 router.get("/api", (req, res) => {
   res.send("Derp");
 });
+// Auth
 router.route("/api/auth/sign-up").post(userController.addNewUser);
 
 router
   .route("/api/auth/log-in")
   .post(passport.authenticate("local"), auth.loggedIn);
 
+router.route("/api/stories").get(storyController.getStoryByStoryId);
+
 router.route("/api/stories/:storyId").get(storyController.getStoryByStoryId);
 
 router
   .route("/api/stories/:storyId/new-section")
   .post(storyController.createNewStorySection);
-
 router
-  .route("/api/stories/:storyId/get-sections")
+  .route("/api/stories/:storyId/:sectionId/move")
+  .get(storyController.moveStoryPart);
+router
+  .route("/api/stories/:storyId/sections")
   .get(storyController.getAllStorySections);
 
 router
   .route("/api/stories/:storyId/:sectionId")
   .get(storyController.getSingleStorySection)
-  .put(storyController.editStorySection);
+  .put(storyController.editStorySection)
+  .delete(storyController.deleteStorySection);
 
 router.route("/api/stories/new").post(storyController.addNewStory);
 

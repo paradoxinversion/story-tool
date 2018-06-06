@@ -1,13 +1,14 @@
 const Story = require("../schema/Story");
 const StorySection = require("../schema/Section");
-const addStory = async (name, content, storyId) => {
+const addStorySection = async (name, content, storyId) => {
   try {
     const story = await Story.findOne({ _id: storyId });
 
     const newStorySection = new StorySection({
       name,
       content,
-      number: story.sections.length
+      number: story.sections.length,
+      story: storyId
     });
     await newStorySection.save();
     story.sections.push(newStorySection);
@@ -19,4 +20,4 @@ const addStory = async (name, content, storyId) => {
   }
 };
 
-module.exports = addStory;
+module.exports = addStorySection;

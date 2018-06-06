@@ -27,12 +27,14 @@ class Tool extends Component {
     super(props);
     this.state = {
       mode: "stories-list",
-      workingStoryId: "",
-      workingSectionId: ""
+      workingStory: null,
+      workingSection: null,
+      workingSections: null
     };
     this.setMode = this.setMode.bind(this);
-    this.setWorkingStoryId = this.setWorkingStoryId.bind(this);
-    this.setWorkingSectionId = this.setWorkingSectionId.bind(this);
+    this.setWorkingStory = this.setWorkingStory.bind(this);
+    this.setWorkingSection = this.setWorkingSection.bind(this);
+    this.setWorkingSections = this.setWorkingSections.bind(this);
   }
   async setMode(mode) {
     await this.setState({
@@ -40,14 +42,19 @@ class Tool extends Component {
     });
   }
 
-  async setWorkingStoryId(storyId) {
+  async setWorkingStory(story) {
     await this.setState({
-      workingStoryId: storyId
+      workingStory: story
     });
   }
-  async setWorkingSectionId(sectionId) {
+  async setWorkingSection(section) {
     await this.setState({
-      workingSectionId: sectionId
+      workingSection: section
+    });
+  }
+  async setWorkingSections(sections) {
+    await this.setState({
+      workingSections: sections
     });
   }
   render() {
@@ -56,16 +63,18 @@ class Tool extends Component {
     return (
       <div className="horizontal-container">
         <Dashboard
-          workingStoryId={this.state.workingStoryId}
-          workingSectionId={this.state.workingSectionId}
+          workingStory={this.state.workingStory}
+          workingSection={this.state.workingSection}
           setMode={this.setMode}
           {...this.props}
         />
         <CurrentWorkspace
-          setWorkingStoryId={this.setWorkingStoryId}
-          setWorkingSectionId={this.setWorkingSectionId}
-          workingStoryId={this.state.workingStoryId}
-          workingSectionId={this.state.workingSectionId}
+          setWorkingStory={this.setWorkingStory}
+          setWorkingSection={this.setWorkingSection}
+          workingStory={this.state.workingStory}
+          workingSection={this.state.workingSection}
+          workingSections={this.state.workingSections}
+          setWorkingSections={this.setWorkingSections}
           setMode={this.setMode}
           {...this.props}
         />

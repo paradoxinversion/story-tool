@@ -5,8 +5,6 @@ const DashboardSubButton = props => {
     return (
       <div
         onClick={() => {
-          console.log("Weeeeeeeeeeeee");
-
           props.setMode(props.mode);
         }}
         className="dashboard__button dashboard__button--sub">

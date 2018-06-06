@@ -28,10 +28,7 @@ class LogIn extends Component {
       username: this.state.name,
       password: this.state.password
     });
-    console.log(result);
     if (result.status === 200) {
-      console.log("Redirecting to Dashboard!");
-      // <Redirect push to="/tool/dashboard" />;
       this.props.setAuthentication(true, result.data.user);
       this.props.history.push("/tool/dashboard");
     }

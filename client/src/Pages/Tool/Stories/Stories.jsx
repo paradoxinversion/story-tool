@@ -1,17 +1,16 @@
 import React from "react";
 import UserStories from "../../../Components/UserStories/UserStories";
+import "./Stories.css";
 
 const Stories = props => {
-  console.log(props);
   return (
-    <div>
+    <div className="stories">
       <p>Stories</p>
       <UserStories
         setMode={props.setMode}
-        setStory={props.setStory}
-        setWorkingStoryId={props.setWorkingStoryId}
-        workingStoryId={props.workingStoryId}
-        workingSectionId={props.workingSectionId}
+        setWorkingStory={props.setWorkingStory}
+        workingStory={props.workingStory}
+        workingSection={props.workingSection}
         stories={props.user.stories}
       />
     </div>

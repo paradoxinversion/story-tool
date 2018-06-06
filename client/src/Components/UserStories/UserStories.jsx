@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const UserStories = props => {
-  console.log("UserStories", props);
   if (props.stories.length === 0) {
     return <p>You have not written any stories yet</p>;
   } else {
@@ -9,10 +8,10 @@ const UserStories = props => {
       <div>
         {props.stories.map(story => (
           <button
+            className="story-entry-button"
             key={story._id}
             onClick={() => {
-              props.setStory(story);
-              props.setWorkingStoryId(story._id);
+              props.setWorkingStory(story);
               props.setMode("story-overview");
             }}>
             {story.title}

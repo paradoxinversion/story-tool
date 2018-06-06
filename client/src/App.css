@@ -82,3 +82,15 @@
   margin: 1rem;
   width: 100%;
 }
+
+.story-entry-button {
+  width: 200px;
+  height: 150px;
+  border-radius: 6px;
+}
+
+.story-part {
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid black;
+}

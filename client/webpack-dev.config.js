@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = {
   mode: "development",

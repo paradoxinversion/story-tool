@@ -33,6 +33,7 @@ class App extends Component {
     });
   }
 
+  getStoryData() {}
   render() {
     return (
       <Router>

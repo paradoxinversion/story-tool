@@ -7,11 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "start-client-dev": "node start-client.js",
+    "start-client-dev": "node start-client.js ",
     "start-server-dev": "nodemon ./src/server.js --watch src/ ",
+    "start-server-debug": "nodemon  --inspect ./src/server.js --watch src/ ",
     "build-client": "cd client && npm run build",
-    "start":
-      "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
+    "start": "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
+    "start-debug": "concurrently \"mongod\" \"npm run start-server-debug\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive"
   },
   "keywords": [],

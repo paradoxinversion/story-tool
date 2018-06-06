@@ -24,7 +24,7 @@ class Dashboard extends Component {
             New Story
           </button>
         </div>
-        {this.props.workingStoryId ? (
+        {this.props.workingStory ? (
           <div className="dashboard__control-group">
             <DashboardButton
               text="Story"
