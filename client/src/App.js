@@ -38,7 +38,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header authenticated={this.state.isAuthenticated} />
+          <Header
+            setAuthentication={this.setAuthentication}
+            authenticated={this.state.isAuthenticated}
+          />
           <Route exact path="/" component={Home} />
           <Route
             path="/auth"

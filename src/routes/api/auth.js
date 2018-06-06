@@ -15,4 +15,9 @@ const isAuthenticated = (req, res) => {
   });
 };
 
-module.exports = { loggedIn };
+const logOut = (req, res) => {
+  res.status(200).json({
+    message: "Log out successful"
+  });
+};
+module.exports = { loggedIn, logOut };

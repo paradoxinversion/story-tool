@@ -8,12 +8,11 @@ router.get("/api", (req, res) => {
   res.send("Derp");
 });
 // Auth
-router.route("/api/auth/sign-up").post(userController.addNewUser);
+router.post("/api/auth/sign-up", userController.addNewUser);
 
-router
-  .route("/api/auth/log-in")
-  .post(passport.authenticate("local"), auth.loggedIn);
+router.post("/api/auth/log-in", passport.authenticate("local"), auth.loggedIn);
 
+router.get("/api/auth/log-out", auth.logOut);
 router.route("/api/user/stories").get(storyController.getUserStories);
 
 router
