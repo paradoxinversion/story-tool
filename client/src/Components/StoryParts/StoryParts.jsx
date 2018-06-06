@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const StoryParts = props => {
   if (props.storyParts.length === 0) {
-    return <p>You have not written any storyParts yet</p>;
+    return <p>You have not written any story sections yet.</p>;
   } else {
     return (
       <div>

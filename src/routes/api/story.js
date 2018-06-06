@@ -1,4 +1,5 @@
 const actions = require("../../database/actions/index");
+
 const addNewStory = async (req, res) => {
   try {
     const newStory = await actions.story.addStory(
@@ -14,9 +15,10 @@ const addNewStory = async (req, res) => {
     res.json(e);
   }
 };
+
 const deleteStory = async (req, res) => {
   try {
-    const deletionResult = await actions.story.deleteStory(req.body.storyId);
+    const deletionResult = await actions.story.deleteStory(req.params.storyId);
     res.status(200).json({
       message: "Story Deleted"
     });
@@ -25,6 +27,20 @@ const deleteStory = async (req, res) => {
     res.json(e);
   }
 };
+
+const getUserStories = async (req, res) => {
+  try {
+    const stories = await actions.story.getUserStories(req.query.userId);
+    res.status(200).json({
+      message: "Found user stories",
+      stories
+    });
+  } catch (e) {
+    console.log(e);
+    res.json(e);
+  }
+};
+
 const getStoryByStoryId = async (req, res) => {
   try {
     const story = await actions.story.getStoryById(req.params.storyId);
@@ -99,6 +115,7 @@ const editStorySection = async (req, res) => {
     res.json(e);
   }
 };
+
 const deleteStorySection = async (req, res) => {
   try {
     const section = await actions.section.deleteStorySection(
@@ -132,11 +149,13 @@ const moveStoryPart = async (req, res) => {
 
 module.exports = {
   addNewStory,
+  deleteStory,
   getStoryByStoryId,
   createNewStorySection,
   getAllStorySections,
   getSingleStorySection,
   editStorySection,
   deleteStorySection,
-  moveStoryPart
+  moveStoryPart,
+  getUserStories
 };

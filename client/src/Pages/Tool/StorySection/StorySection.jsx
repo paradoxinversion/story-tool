@@ -107,8 +107,7 @@ class StorySection extends Component {
                     );
 
                     if (result.status === 200) {
-                      console.log("yay");
-                      this.props.setWorkingSectionId("");
+                      this.props.setWorkingSection(null);
                       this.props.setMode("story-sections");
                     }
                   }

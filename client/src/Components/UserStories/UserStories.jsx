@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const UserStories = props => {
-  if (props.stories.length === 0) {
+  if (props.stories === null || props.stories.length === 0) {
     return <p>You have not written any stories yet</p>;
   } else {
     return (

@@ -27,6 +27,7 @@ class Tool extends Component {
     super(props);
     this.state = {
       mode: "stories-list",
+      stories: null,
       workingStory: null,
       workingSection: null,
       workingSections: null
@@ -35,10 +36,18 @@ class Tool extends Component {
     this.setWorkingStory = this.setWorkingStory.bind(this);
     this.setWorkingSection = this.setWorkingSection.bind(this);
     this.setWorkingSections = this.setWorkingSections.bind(this);
+    this.setStories = this.setStories.bind(this);
   }
+
   async setMode(mode) {
     await this.setState({
       mode
+    });
+  }
+
+  async setStories(stories) {
+    await this.setState({
+      stories
     });
   }
 
@@ -47,16 +56,19 @@ class Tool extends Component {
       workingStory: story
     });
   }
+
   async setWorkingSection(section) {
     await this.setState({
       workingSection: section
     });
   }
+
   async setWorkingSections(sections) {
     await this.setState({
       workingSections: sections
     });
   }
+
   render() {
     const CurrentWorkspace = toolComponents[this.state.mode];
     const { match } = this.props;
@@ -69,6 +81,8 @@ class Tool extends Component {
           {...this.props}
         />
         <CurrentWorkspace
+          stories={this.state.stories}
+          setStories={this.setStories}
           setWorkingStory={this.setWorkingStory}
           setWorkingSection={this.setWorkingSection}
           workingStory={this.state.workingStory}

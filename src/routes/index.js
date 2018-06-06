@@ -14,9 +14,12 @@ router
   .route("/api/auth/log-in")
   .post(passport.authenticate("local"), auth.loggedIn);
 
-router.route("/api/stories").get(storyController.getStoryByStoryId);
+router.route("/api/user/stories").get(storyController.getUserStories);
 
-router.route("/api/stories/:storyId").get(storyController.getStoryByStoryId);
+router
+  .route("/api/stories/:storyId")
+  .get(storyController.getStoryByStoryId)
+  .delete(storyController.deleteStory);
 
 router
   .route("/api/stories/:storyId/new-section")
