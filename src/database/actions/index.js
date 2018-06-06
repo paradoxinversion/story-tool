@@ -1,16 +1,18 @@
-const addStory = require("../../database/actions/addStory");
-const getStoryById = require("../../database/actions/getStoryById");
-const addStorySection = require("../../database/actions/addStorySection");
-const getStorySections = require("../../database/actions/getStorySections");
-const getStorySection = require("../../database/actions/getStorySection");
-const editStorySection = require("../../database/actions/editStorySection");
-const deleteStorySection = require("../../database/actions/deleteStorySection");
-const moveStorySection = require("../../database/actions/moveStorySection");
+const addStory = require("./addStory");
+const deleteStory = require("./deleteStory");
+const getStoryById = require("./getStoryById");
+const addStorySection = require("./addStorySection");
+const getStorySections = require("./getStorySections");
+const getStorySection = require("./getStorySection");
+const editStorySection = require("./editStorySection");
+const deleteStorySection = require("./deleteStorySection");
+const moveStorySection = require("./moveStorySection");
 
 module.exports = {
   story: {
     addStory,
-    getStoryById
+    getStoryById,
+    deleteStory
   },
   section: {
     addStorySection,

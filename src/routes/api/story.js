@@ -14,7 +14,17 @@ const addNewStory = async (req, res) => {
     res.json(e);
   }
 };
-
+const deleteStory = async (req, res) => {
+  try {
+    const deletionResult = await actions.story.deleteStory(req.body.storyId);
+    res.status(200).json({
+      message: "Story Deleted"
+    });
+  } catch (e) {
+    console.log(e);
+    res.json(e);
+  }
+};
 const getStoryByStoryId = async (req, res) => {
   try {
     const story = await actions.story.getStoryById(req.params.storyId);

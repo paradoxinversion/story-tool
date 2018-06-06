@@ -20,6 +20,7 @@ class Story extends Component {
       <section className="workspace-container">
         {this.props.story ? (
           <div className="story">
+            <button>Delete Story</button>
             <p>Story: {this.props.story.title}</p>
 
             <p>Synopsis: {this.props.story.synopsis}</p>
