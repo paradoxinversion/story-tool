@@ -1,3 +1,5 @@
+"use strict";
+
 const Section = require("../schema/Section");
 const getHighestSectionInStory = require("../actions/getHighestSectionInStory");
 const renumberSections = require("../actions/renumberSections");

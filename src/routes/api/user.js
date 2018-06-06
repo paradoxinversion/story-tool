@@ -1,3 +1,5 @@
+"use strict";
+
 const addUser = require("../../database/actions/addUser");
 const getUserByName = require("../../database/actions/getUserByName");
 

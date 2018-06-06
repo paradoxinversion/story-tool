@@ -1,5 +1,12 @@
+"use strict";
+
 const actions = require("../../database/actions/index");
 
+/**
+ * Router handle for creating a new story
+ * @param {*} req
+ * @param {*} res
+ */
 const addNewStory = async (req, res) => {
   try {
     const newStory = await actions.story.addStory(
@@ -16,6 +23,11 @@ const addNewStory = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for deleting a story
+ * @param {*} req
+ * @param {*} res
+ */
 const deleteStory = async (req, res) => {
   try {
     const deletionResult = await actions.story.deleteStory(req.params.storyId);
@@ -28,6 +40,11 @@ const deleteStory = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for getting all user stories
+ * @param {*} req
+ * @param {*} res
+ */
 const getUserStories = async (req, res) => {
   try {
     const stories = await actions.story.getUserStories(req.query.userId);
@@ -41,6 +58,11 @@ const getUserStories = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for getting a single story by its Id
+ * @param {*} req
+ * @param {*} res
+ */
 const getStoryByStoryId = async (req, res) => {
   try {
     const story = await actions.story.getStoryById(req.params.storyId);
@@ -54,6 +76,11 @@ const getStoryByStoryId = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for creating a new story section
+ * @param {*} req
+ * @param {*} res
+ */
 const createNewStorySection = async (req, res) => {
   try {
     const section = await actions.section.addStorySection(
@@ -71,6 +98,11 @@ const createNewStorySection = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for getting all sections of a given story
+ * @param {*} req
+ * @param {*} res
+ */
 const getAllStorySections = async (req, res) => {
   try {
     const sections = await actions.section.getStorySections(req.params.storyId);
@@ -84,6 +116,11 @@ const getAllStorySections = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for getting a single story section by its id
+ * @param {*} req
+ * @param {*} res
+ */
 const getSingleStorySection = async (req, res) => {
   try {
     console.log("Getting section");
@@ -99,6 +136,11 @@ const getSingleStorySection = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for editing a story section
+ * @param {*} req
+ * @param {*} res
+ */
 const editStorySection = async (req, res) => {
   try {
     const section = await actions.section.editStorySection(
@@ -116,6 +158,11 @@ const editStorySection = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for deleting a single story section by its Id
+ * @param {*} req
+ * @param {*} res
+ */
 const deleteStorySection = async (req, res) => {
   try {
     const section = await actions.section.deleteStorySection(
@@ -131,6 +178,11 @@ const deleteStorySection = async (req, res) => {
   }
 };
 
+/**
+ * Route handler for moving a story part up or down
+ * @param {*} req
+ * @param {*} res
+ */
 const moveStoryPart = async (req, res) => {
   try {
     const updatedSections = await actions.section.moveStorySection(

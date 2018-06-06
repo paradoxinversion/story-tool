@@ -1,3 +1,5 @@
+"use strict";
+
 const passport = require("passport");
 const getUserStories = require("../../database/actions/getUserStories");
 const loggedIn = async (req, res) => {

@@ -1,3 +1,5 @@
+"use strict";
+
 const Story = require("../schema/Story");
 const StorySection = require("../schema/Section");
 

@@ -1,4 +1,5 @@
 "use strict";
+
 const Story = require("../schema/Story");
 const renumberSections = require("./renumberSections");
 

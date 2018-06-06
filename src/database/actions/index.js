@@ -1,3 +1,5 @@
+"use strict";
+
 const addStory = require("./addStory");
 const deleteStory = require("./deleteStory");
 const getStoryById = require("./getStoryById");
