@@ -1,6 +1,9 @@
+"use strict";
+
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+import createStory from "../../../toolCommands/story/createStory";
 class NewStory extends Component {
   constructor(props) {
     super(props);
@@ -22,18 +25,19 @@ class NewStory extends Component {
       [name]: value
     });
   }
+
   async handleNewStory(event) {
     event.preventDefault();
-    const result = await axios.post("http://localhost:3001/api/stories/new", {
-      title: this.state.title,
-      synopsis: this.state.synopsis,
-      userId: this.props.user.id
-    });
-    console.log(result);
+    const result = await createStory(
+      this.state.title,
+      this.state.synopsis,
+      this.props.user.id
+    );
     if (result.status === 200) {
-      this.props.history.push("/tool/dashboard");
+      this.props.setMode("stories-list");
     }
   }
+
   render() {
     return (
       <Fragment>

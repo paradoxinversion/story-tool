@@ -7,7 +7,6 @@ class Stories extends Component {
   async componentDidMount() {
     const result = await getUserStories(this.props.user.id);
     await this.props.setStories(result.data.stories);
-    console.log(result);
   }
   render() {
     return (
