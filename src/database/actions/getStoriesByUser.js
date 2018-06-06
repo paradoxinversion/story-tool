@@ -1,5 +1,10 @@
 const Story = require("../schema/Story");
-const getStoryById = async userId => {
+
+/**
+ * Gets all stories created by a user
+ * @param {string} userId The Id of the user who's stories to retrieve
+ */
+const getStoriesByUser = async userId => {
   try {
     const stories = await Story.findOne({ author: userId });
     return stories;
@@ -8,4 +13,4 @@ const getStoryById = async userId => {
   }
 };
 
-module.exports = getStoryById;
+module.exports = getStoriesByUser;

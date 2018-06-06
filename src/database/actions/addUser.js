@@ -1,6 +1,12 @@
 const bcrypt = require("bcrypt");
 const User = require("../schema/User");
 
+/**
+ * Creates a new user
+ * @param {string} username The user's identifying name
+ * @param {string} password The user's plaintext password
+ * @param {boolean} isGuest Is the new user starting a guest session?
+ */
 const addUser = async (username, password, isGuest) => {
   console.log(
     "Adding user with info (username, password, isGuest):: ",

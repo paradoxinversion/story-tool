@@ -1,4 +1,9 @@
 const Story = require("../schema/Story");
+
+/**
+ * Returns a single story with the supplied id
+ * @param {string} storyId
+ */
 const getStoryById = async storyId => {
   try {
     const story = await Story.findOne({ _id: storyId }).populate("sections");

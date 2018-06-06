@@ -1,15 +1,13 @@
 const Section = require("../schema/Section");
 const getHighestSectionInStory = require("../actions/getHighestSectionInStory");
 const renumberSections = require("../actions/renumberSections");
+
+/**
+ * Returns all sections whos story matches the given id in ascending our, according to their number.
+ * Automatically renumbers sections.
+ * @param {string} storyId
+ */
 const getStorySections = async storyId => {
-  // const sectionMeta = await getHighestSectionInStory(storyId);
-  // if (
-  //   sectionMeta.lowest !== 0 ||
-  //   sectionMeta.highest > sectionMeta.length - 1
-  // ) {
-  //   console.log("Sections numbering out of sync, renumbering");
-  //   await renumberSections(storyId);
-  // }
   await renumberSections(storyId);
   const sections = await Section.find({ story: storyId }).sort("number");
 

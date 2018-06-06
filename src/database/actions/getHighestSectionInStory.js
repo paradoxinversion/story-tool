@@ -1,6 +1,11 @@
 "use strict";
 const Story = require("../schema/Story");
 const renumberSections = require("./renumberSections");
+
+/**
+ * Returns the highest and lowest numbered sections in a given story. This is helpful when determining if section number has fallen out of sync.
+ * @param {string} storyId The Id of the story who's sections to search
+ */
 const getHighestSectionInStory = async function(storyId) {
   const result = {
     length: null,
