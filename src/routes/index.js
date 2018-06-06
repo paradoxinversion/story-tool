@@ -6,14 +6,9 @@ const passport = require("passport");
 const auth = require("./api/auth");
 const userController = require("./api/user");
 const storyController = require("./api/story");
-router.get("/api", (req, res) => {
-  res.send("Derp");
-});
-// Auth
+
 router.post("/api/auth/sign-up", userController.addNewUser);
-
 router.post("/api/auth/log-in", passport.authenticate("local"), auth.loggedIn);
-
 router.get("/api/auth/log-out", auth.logOut);
 router.route("/api/user/stories").get(storyController.getUserStories);
 
