@@ -41,7 +41,7 @@ class Dashboard extends Component {
                 { text: "New Section", mode: "new-section" }
               ]}
             />
-            <DashboardButton
+            {/* <DashboardButton
               text="Characters"
               className="dashboard__button"
               setMode={this.props.setMode}
@@ -58,7 +58,7 @@ class Dashboard extends Component {
               className="dashboard__button"
               setMode={this.props.setMode}
               subButtons={[{ text: "New Object", mode: "new-object" }]}
-            />
+            /> */}
           </div>
         ) : null}
       </div>

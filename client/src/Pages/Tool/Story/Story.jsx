@@ -37,12 +37,12 @@ class Story extends Component {
               Delete Story
             </button>
             <p>Story: {this.props.story.title}</p>
-
             <p>Synopsis: {this.props.story.synopsis}</p>
-            <p>Characters</p>
+            <p>Parts: {this.props.story.sections.length} </p>
+            {/* <p>Characters</p>
             <p>Locations</p>
             <p>Items/Objects</p>
-            <p>Notes</p>
+            <p>Notes</p> */}
           </div>
         ) : (
           <div>

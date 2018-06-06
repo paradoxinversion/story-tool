@@ -12,7 +12,6 @@ class StorySections extends Component {
         this.props.workingStory._id
       }/sections`
     );
-    console.log(result);
     if (result.status === 200) {
       this.props.setWorkingSections(result.data.sections);
     }

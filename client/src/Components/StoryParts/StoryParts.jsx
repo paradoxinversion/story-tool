@@ -9,7 +9,7 @@ const StoryParts = props => {
       <div>
         {props.storyParts.map(section => (
           <div className="story-part">
-            <p>{section.number}</p>
+            <p>{section.number + 1}</p>
             <div
               key={section._id}
               onClick={async () => {
@@ -28,7 +28,6 @@ const StoryParts = props => {
                     }/${section._id}/move?up=false`
                   );
                   if (result.status === 200) {
-                    console.log("should update?");
                     await props.setWorkingSections(result.data.updatedSections);
                   }
                 }}>
@@ -43,7 +42,6 @@ const StoryParts = props => {
                     }/${section._id}/move?up=true`
                   );
                   if (result.status === 200) {
-                    console.log("should update?");
                     await props.setWorkingSections(result.data.updatedSections);
                   }
                 }}>

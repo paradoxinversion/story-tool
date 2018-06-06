@@ -33,8 +33,6 @@ class NewSection extends Component {
         storyId: this.props.story._id
       }
     );
-    console.log(result);
-
     if (result.status == 200) {
       this.props.setMode("story-overview");
     }
