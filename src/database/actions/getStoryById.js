@@ -8,7 +8,9 @@ const Story = require("../schema/Story");
  */
 const getStoryById = async storyId => {
   try {
-    const story = await Story.findOne({ _id: storyId }).populate("sections");
+    const rawStory = await Story.findOne({ _id: storyId }).populate("sections");
+
+    const story = await rawStory.returnStoryInstance();
     return story;
   } catch (e) {
     console.log(e);

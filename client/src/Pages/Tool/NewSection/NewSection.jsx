@@ -26,11 +26,13 @@ class NewSection extends Component {
   async handleNewSection(event) {
     event.preventDefault();
     const result = await axios.post(
-      `http://localhost:3001/api/stories/${this.props.story.id}/new-section`,
+      `http://localhost:3001/api/stories/${
+        this.props.workingStory.id
+      }/new-section`,
       {
         name: this.state.name,
         content: this.state.content,
-        storyId: this.props.story.id
+        storyId: this.props.workingStory.id
       }
     );
     if (result.status == 200) {

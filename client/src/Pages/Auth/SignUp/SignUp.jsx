@@ -42,46 +42,49 @@ class SignUp extends Component {
     return (
       <div className="container">
         <div className="panel panel-centered">
-          <form className="vertical-form ">
-            <p className="vertical-form__title"> Sign Up</p>
-            <label className="form__label" htmlFor="username">
-              Username
-            </label>
-            <input
-              className="vertical-form__input"
-              name="name"
-              type="text"
-              id="username"
-              autoComplete="off"
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              required={true}
-              minLength="4"
-              maxLength="12"
-            />
-            <label className="form__label" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="vertical-form__input"
-              name="password"
-              type="password"
-              id="password"
-              autoComplete="new-password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              required={true}
-              minLength="4"
-              maxLength="12"
-            />
-            <button
-              className="button"
-              onClick={this.handleSignUp}
-              type="submit">
-              {" "}
-              Sign Up{" "}
-            </button>
-          </form>
+          <section className="panel">
+            <form className="vertical-form ">
+              <p className="vertical-form__title"> Sign Up</p>
+              <label className="form__label" htmlFor="username">
+                Username
+              </label>
+              <input
+                className="vertical-form__input"
+                name="name"
+                type="text"
+                id="username"
+                autoComplete="off"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+                required={true}
+                minLength="4"
+                maxLength="12"
+              />
+              <label className="form__label" htmlFor="password">
+                Password
+              </label>
+              <input
+                className="vertical-form__input"
+                name="password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                required={true}
+                minLength="4"
+                maxLength="12"
+              />
+              <button
+                className="button"
+                onClick={this.handleSignUp}
+                type="submit">
+                {" "}
+                Sign Up{" "}
+              </button>
+            </form>
+          </section>
+
           <div className="panel">
             <p>
               {" "}

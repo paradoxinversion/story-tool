@@ -14,11 +14,9 @@ class App extends Component {
     super(props);
     this.state = {
       isAuthenticated: false,
-      user: null,
-      story: null
+      user: null
     };
     this.setAuthentication = this.setAuthentication.bind(this);
-    this.setStory = this.setStory.bind(this);
   }
   setAuthentication(authenticationStatus, user = null) {
     this.setState({
@@ -27,13 +25,6 @@ class App extends Component {
     });
   }
 
-  setStory(story) {
-    this.setState({
-      story
-    });
-  }
-
-  getStoryData() {}
   render() {
     return (
       <Router>
@@ -51,8 +42,6 @@ class App extends Component {
             path="/tool"
             authenticated={this.state.isAuthenticated}
             user={this.state.user}
-            setStory={this.setStory}
-            story={this.state.story}
             component={Tool}
           />
         </div>

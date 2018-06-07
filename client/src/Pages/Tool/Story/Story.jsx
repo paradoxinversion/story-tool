@@ -13,20 +13,22 @@ class Story extends Component {
       `http://localhost:3001/api/stories/${this.props.workingStory.id}`
     );
     if (result.status === 200) {
-      this.props.setStory(result.data.story);
+      this.props.setWorkingStory(result.data.story);
     }
   }
 
   render() {
     return (
       <section className="workspace-container">
-        {this.props.story ? (
+        {this.props.workingStory !== null ? (
           <div className="story">
-            <p className="story__title">{this.props.story.title}</p>
-            <p className="story__synopsis">{this.props.story.synopsis}</p>
-            <p className="story__parts">
-              {this.props.story.sections.length} parts written
+            <p className="story__title">{this.props.workingStory.title}</p>
+            <p className="story__synopsis">
+              {this.props.workingStory.synopsis}
             </p>
+            {/* <p className="story__parts">
+              {this.props.workingStory.sections.length} parts written
+            </p> */}
             <div className="panel panel--horizontal story__commands">
               <button
                 className="button"
