@@ -41,17 +41,22 @@ class NewSection extends Component {
     return (
       <Fragment>
         <section className="workspace-container">
-          <form className="vertical-form full-width">
-            <p>New Section</p>
-            <label htmlFor="name">Name</label>
+          <form className="vertical-form full-height">
+            <p className="vertical-form__title">New Section</p>
+            <label className="vertical-form__label" htmlFor="name">
+              Name
+            </label>
             <input
+              className="vertical-form__input"
               name="name"
               type="text"
               id="name"
               required={true}
               onChange={this.handleInputChange}
             />
-            <label htmlFor="content">content</label>
+            <label className="vertical-form__label" htmlFor="content">
+              Content
+            </label>
             <textarea
               className="grow workspace-writing-area"
               name="content"
@@ -59,7 +64,10 @@ class NewSection extends Component {
               required={true}
               onChange={this.handleInputChange}
             />
-            <button type="submit" onClick={this.handleNewSection}>
+            <button
+              className="button"
+              type="submit"
+              onClick={this.handleNewSection}>
               {" "}
               Create{" "}
             </button>

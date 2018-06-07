@@ -1,0 +1,37 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  background-color: #f2f2f2;
+  min-width: 150px;
+}
+
+.dashboard__button {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid white;
+}
+.dashboard__button--sub {
+  background-color: darkgrey;
+}
+.dashboard__button:hover {
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid red;
+}
+
+.dashboard__button--text {
+  margin: 0;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  text-align: center;
+}
+.dashboard__control-group {
+  margin-bottom: 1rem;
+}

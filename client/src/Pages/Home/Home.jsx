@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <section>
+    <section className="container">
       <h1>Welcome to Story Tool!</h1>
       <p>
         This little web application aims to become your on-the-go writing tool,

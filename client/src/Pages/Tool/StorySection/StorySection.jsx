@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import deleteStorySection from "../../../toolCommands/section/deleteStorySection";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
 import axios from "axios";
+import "./StorySection.css";
 class StorySection extends Component {
   constructor(props) {
     super(props);
@@ -95,27 +96,37 @@ class StorySection extends Component {
         <div>
           {this.state.section ? (
             <div className="story">
-              <button onClick={this.toggleEditMode}>Edit Part</button>
-              <button
-                onClick={async () => {
-                  if (
-                    window.confirm("Are you sure you wish to delete this item?")
-                  ) {
-                    const result = await deleteStorySection(
-                      this.props.story.id,
-                      this.state.section._id
-                    );
+              <div className="panel panel--horizontal">
+                <button className="button" onClick={this.toggleEditMode}>
+                  Edit Part
+                </button>
+                <button
+                  className="button"
+                  onClick={async () => {
+                    if (
+                      window.confirm(
+                        "Are you sure you wish to delete this item?"
+                      )
+                    ) {
+                      const result = await deleteStorySection(
+                        this.props.story.id,
+                        this.state.section._id
+                      );
 
-                    if (result.status === 200) {
-                      this.props.setWorkingSection(null);
-                      this.props.setMode("story-sections");
+                      if (result.status === 200) {
+                        this.props.setWorkingSection(null);
+                        this.props.setMode("story-sections");
+                      }
                     }
-                  }
-                }}>
-                Delete Part
-              </button>
-              <p>{this.state.section.name}</p>
-              <p>{this.state.section.content}</p>
+                  }}>
+                  Delete Part
+                </button>
+              </div>
+
+              <p className="title">{this.state.section.name}</p>
+              <p className="story-section__content">
+                {this.state.section.content}
+              </p>
             </div>
           ) : (
             <div>
@@ -126,10 +137,13 @@ class StorySection extends Component {
       );
     } else {
       return (
-        <form className="vertical-form full-width">
-          <p>Edit Section</p>
-          <label htmlFor="name">Name</label>
+        <form className="vertical-form full-height">
+          <p className="vertical-form__title">Edit Section</p>
+          <label className="vertical-form__label" htmlFor="name">
+            Name
+          </label>
           <input
+            className="vertical-form__input"
             name="name"
             type="text"
             id="name"
@@ -137,7 +151,9 @@ class StorySection extends Component {
             onChange={this.handleInputChange}
             value={this.state.name}
           />
-          <label htmlFor="content">content</label>
+          <label className="vertical-form__label" htmlFor="content">
+            content
+          </label>
           <textarea
             className="grow workspace-writing-area"
             name="content"
@@ -146,11 +162,19 @@ class StorySection extends Component {
             onChange={this.handleInputChange}
             value={this.state.content}
           />
-          <button type="submit" onClick={this.handleEditSection}>
-            {" "}
-            Edit{" "}
-          </button>
-          <button onClick={this.toggleEditMode}> Cancel</button>
+          <div className="panel">
+            <button
+              className="button"
+              type="submit"
+              onClick={this.handleEditSection}>
+              {" "}
+              Edit{" "}
+            </button>
+            <button className="button" onClick={this.toggleEditMode}>
+              {" "}
+              Cancel
+            </button>
+          </div>
         </form>
       );
     }

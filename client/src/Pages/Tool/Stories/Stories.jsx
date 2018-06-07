@@ -10,8 +10,8 @@ class Stories extends Component {
   }
   render() {
     return (
-      <div className="stories">
-        <p>Stories</p>
+      <div className="workspace-container stories">
+        <p className="title">Stories</p>
         <UserStories
           setMode={this.props.setMode}
           setWorkingStory={this.props.setWorkingStory}

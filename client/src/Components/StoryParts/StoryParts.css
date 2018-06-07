@@ -1,0 +1,13 @@
+.story-part__index {
+  font-weight: bold;
+  align-self: center;
+}
+.story-part__index::after {
+  content: ".";
+  margin-right: 1rem;
+}
+.story-part__title {
+  align-self: center;
+  font-size: 18px;
+  flex-grow: 1;
+}

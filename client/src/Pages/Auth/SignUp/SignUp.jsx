@@ -40,48 +40,61 @@ class SignUp extends Component {
 
   render() {
     return (
-      <Fragment>
-        <form>
-          <p> Sign Up</p>
-          <label htmlFor="username">Username</label>
-          <input
-            name="name"
-            type="text"
-            id="username"
-            autoComplete="off"
-            value={this.state.name}
-            onChange={this.handleInputChange}
-            required={true}
-            minLength="4"
-            maxLength="12"
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            id="password"
-            autoComplete="new-password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            required={true}
-            minLength="4"
-            maxLength="12"
-          />
-          <button onClick={this.handleSignUp} type="submit">
-            {" "}
-            Sign Up{" "}
-          </button>
-        </form>
-        <p>
-          {" "}
-          If you prefer not to commit to a sign up yet, you can also sign in as
-          a guest. This gives you access to all features of a full account with
-          the caveat that it will self-destruct in 24 hours. While your guest
-          account is active, you will be able to complete signup without losing
-          any data.
-        </p>
-        <button>Sign in as a guest</button>
-      </Fragment>
+      <div className="container">
+        <div className="panel panel-centered">
+          <form className="vertical-form ">
+            <p className="vertical-form__title"> Sign Up</p>
+            <label className="form__label" htmlFor="username">
+              Username
+            </label>
+            <input
+              className="vertical-form__input"
+              name="name"
+              type="text"
+              id="username"
+              autoComplete="off"
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              required={true}
+              minLength="4"
+              maxLength="12"
+            />
+            <label className="form__label" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="vertical-form__input"
+              name="password"
+              type="password"
+              id="password"
+              autoComplete="new-password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              required={true}
+              minLength="4"
+              maxLength="12"
+            />
+            <button
+              className="button"
+              onClick={this.handleSignUp}
+              type="submit">
+              {" "}
+              Sign Up{" "}
+            </button>
+          </form>
+          <div className="panel">
+            <p>
+              {" "}
+              If you prefer not to commit to a sign up yet, you can also sign in
+              as a guest. This gives you access to all features of a full
+              account with the caveat that it will self-destruct in 24 hours.
+              While your guest account is active, you will be able to complete
+              signup without losing any data.
+            </p>
+            <button className="button">Sign in as a guest</button>
+          </div>
+        </div>
+      </div>
     );
   }
 }

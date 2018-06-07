@@ -35,11 +35,14 @@ class LogIn extends Component {
   }
   render() {
     return (
-      <Fragment>
-        <form>
-          <p>Log In</p>
-          <label htmlFor="username">Usernam</label>
+      <div className="container">
+        <form className="vertical-form panel panel-centered">
+          <p className="vertical-form__title">Log In</p>
+          <label className="vertical-form__label" htmlFor="username">
+            Username
+          </label>
           <input
+            className="vertical-form__input"
             name="name"
             type="text"
             id="username"
@@ -49,8 +52,11 @@ class LogIn extends Component {
             maxLength="12"
             onChange={this.handleInputChange}
           />
-          <label htmlFor="password">Password</label>
+          <label className="vertical-form__label" htmlFor="password">
+            Password
+          </label>
           <input
+            className="vertical-form__input"
             name="password"
             type="password"
             id="password"
@@ -60,12 +66,12 @@ class LogIn extends Component {
             maxLength="12"
             onChange={this.handleInputChange}
           />
-          <button type="submit" onClick={this.handleLogIn}>
+          <button className="button" type="submit" onClick={this.handleLogIn}>
             {" "}
             Log In{" "}
           </button>
         </form>
-      </Fragment>
+      </div>
     );
   }
 }

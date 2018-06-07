@@ -1,14 +1,16 @@
 import React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import axios from "axios";
+import "./Header.css";
 const Header = props => {
   if (props.authenticated) {
     return (
       <header className="main-header">
-        <nav>
-          <ul className="main-header__nav-list">
+        <nav className="main-header__nav">
+          <ul className="main-header__nav__list">
             <li>
               <button
+                className="button"
                 onClick={async () => {
                   await axios.get("http://localhost:3000/api/auth/log-out");
                   await props.setAuthentication(false, null);
@@ -16,9 +18,6 @@ const Header = props => {
                 }}>
                 Log Out
               </button>
-              <Link className="main-header__nav-link" to="/auth/log-out">
-                Log Out
-              </Link>
             </li>
           </ul>
         </nav>
@@ -27,20 +26,20 @@ const Header = props => {
   } else {
     return (
       <header className="main-header">
-        <nav>
-          <ul className="main-header__nav-list">
+        <nav className="main-header__nav">
+          <ul className="main-header__nav__list">
             <li>
-              <Link className="main-header__nav-link" to="/">
+              <Link className="main-header__nav__list__link" to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link className="main-header__nav-link" to="/auth/signup">
+              <Link className="main-header__nav__list__link" to="/auth/signup">
                 Sign Up
               </Link>
             </li>
             <li>
-              <Link className="main-header__nav-link" to="/auth/login">
+              <Link className="main-header__nav__list__link" to="/auth/login">
                 Log In
               </Link>
             </li>

@@ -1,0 +1,15 @@
+.story {
+  width: 100%;
+}
+
+.story__title {
+  font-size: 32px;
+  font-weight: bold;
+}
+.story__synopsis {
+  font-style: italic;
+}
+.story__commands {
+  width: 100%;
+  /* padding: 0.5rem; */
+}

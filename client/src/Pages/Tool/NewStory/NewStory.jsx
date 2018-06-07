@@ -40,11 +40,14 @@ class NewStory extends Component {
 
   render() {
     return (
-      <Fragment>
-        <form>
-          <p>New Story</p>
-          <label htmlFor="title">Title</label>
+      <div className="workspace-container">
+        <form className="vertical-form">
+          <p className="vertical-form__title">New Story</p>
+          <label className="vertical-form__label" htmlFor="title">
+            Title
+          </label>
           <input
+            className="vertical-form__input"
             name="title"
             type="text"
             id="title"
@@ -54,20 +57,27 @@ class NewStory extends Component {
             maxLength="32"
             onChange={this.handleInputChange}
           />
-          <label htmlFor="synopsis">Synopsis</label>
-          <input
+          <label className="vertical-form__label" htmlFor="synopsis">
+            Synopsis
+          </label>
+          <textarea
+            className="vertical-form__input"
             name="synopsis"
             type="text"
             id="synopsis"
             required={true}
+            maxLength="3000"
             onChange={this.handleInputChange}
           />
-          <button type="submit" onClick={this.handleNewStory}>
+          <button
+            className="button"
+            type="submit"
+            onClick={this.handleNewStory}>
             {" "}
             Create{" "}
           </button>
         </form>
-      </Fragment>
+      </div>
     );
   }
 }

@@ -1,3 +1,9 @@
+.button {
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 1rem;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -5,11 +11,67 @@
   height: 100vh;
 }
 
-/* Forms */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+}
 
+/* A centered flex container that takes 75% of width and full height */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 75vw;
+  height: 100%;
+}
+
+/* A flex container used for the dashboard */
+.horizontal-container {
+  display: flex;
+  height: 100%;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.panel-centered {
+  margin: auto;
+}
+
+.panel--horizontal {
+  flex-direction: row;
+}
+
+/* Forms */
 .vertical-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.vertical-form__title {
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+}
+
+.vertical-form__label {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.vertical-form__input {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border-color: lightgrey;
+  border-style: solid;
 }
 
 /* Basic Modifiers */
@@ -17,80 +79,24 @@
   width: 100%;
 }
 
+.full-height {
+  height: 100%;
+}
+
 .grow {
   flex-grow: 1;
 }
 
-.main-header {
-  border-bottom: 2px solid black;
-}
-.main-header__nav-list {
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
-
-.main-header__nav-link {
-  text-decoration: none;
-  margin-right: 1rem;
-}
-
-.horizontal-container {
-  display: flex;
-  height: 100%;
-}
-
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid lightgrey;
-  background-color: #f2f2f2;
-  min-width: 150px;
-}
-
-.dashboard__button {
-  width: 100%;
-  background-color: black;
-  color: white;
-  border: none;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid white;
-}
-.dashboard__button--sub {
-  background-color: darkgrey;
-}
-.dashboard__button:hover {
-  width: 100%;
-  background-color: white;
-  color: black;
-  border-bottom: 1px solid red;
-}
-
-.dashboard__button--text {
-  margin: 0;
-  -webkit-margin-before: 0px;
-  -webkit-margin-after: 0px;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  text-align: center;
-}
-.dashboard__control-group {
-  margin-bottom: 1rem;
-}
 .workspace-container {
   display: flex;
+  flex-direction: column;
   margin: 1rem;
   width: 100%;
 }
 
-.story-entry-button {
-  width: 200px;
-  height: 150px;
+.workspace-writing-area {
+  resize: none;
   border-radius: 6px;
-}
-
-.story-part {
-  border-radius: 6px;
+  border-color: lightgrey;
   padding: 1rem;
-  border: 1px solid black;
 }

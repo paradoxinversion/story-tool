@@ -1,0 +1,17 @@
+.story-entry {
+  display: flex;
+  height: 60px;
+  border-radius: 6px;
+  border: 1px solid lightgrey;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.story-entry__title {
+  flex-grow: 1;
+  align-self: center;
+  font-size: 18px;
+  margin: 0;
+}
+.story-entry__commands {
+  align-self: center;
+}
