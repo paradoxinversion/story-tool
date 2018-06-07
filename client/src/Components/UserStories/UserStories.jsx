@@ -9,7 +9,7 @@ const UserStories = props => {
         {props.stories.map(story => (
           <button
             className="story-entry-button"
-            key={story._id}
+            key={story.id}
             onClick={() => {
               props.setWorkingStory(story);
               props.setMode("story-overview");

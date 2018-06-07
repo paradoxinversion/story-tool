@@ -19,7 +19,7 @@ class StorySection extends Component {
 
   async getSectionData() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStory._id}/${
+      `http://localhost:3001/api/stories/${this.props.workingStory.id}/${
         this.props.workingSection._id
       }`
     );
@@ -72,7 +72,7 @@ class StorySection extends Component {
   async handleEditSection(event) {
     event.preventDefault();
     const result = await axios.put(
-      `http://localhost:3001/api/stories/${this.props.story._id}/${
+      `http://localhost:3001/api/stories/${this.props.story.id}/${
         this.props.workingSection._id
       }`,
       {
@@ -102,7 +102,7 @@ class StorySection extends Component {
                     window.confirm("Are you sure you wish to delete this item?")
                   ) {
                     const result = await deleteStorySection(
-                      this.props.story._id,
+                      this.props.story.id,
                       this.state.section._id
                     );
 

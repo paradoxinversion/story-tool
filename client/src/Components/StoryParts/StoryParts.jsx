@@ -24,7 +24,7 @@ const StoryParts = props => {
                 onClick={async () => {
                   const result = await axios.get(
                     `http://localhost:3000/api/stories/${
-                      props.workingStory._id
+                      props.workingStory.id
                     }/${section._id}/move?up=false`
                   );
                   if (result.status === 200) {
@@ -38,7 +38,7 @@ const StoryParts = props => {
                 onClick={async () => {
                   const result = await axios.get(
                     `http://localhost:3000/api/stories/${
-                      props.workingStory._id
+                      props.workingStory.id
                     }/${section._id}/move?up=true`
                   );
                   if (result.status === 200) {

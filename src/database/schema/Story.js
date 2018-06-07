@@ -14,7 +14,13 @@ const storySchema = Schema({
 });
 
 storySchema.methods.returnStoryInstance = function(err) {
-  return new Story(this.name);
+  return new Story(
+    this.title,
+    this._id,
+    this.title,
+    this.synopsis,
+    this.author
+  );
 };
 
 const StoryModel = mongoose.model("Story", storySchema);

@@ -8,9 +8,7 @@ class StorySections extends Component {
   }
   async getSections() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${
-        this.props.workingStory._id
-      }/sections`
+      `http://localhost:3001/api/stories/${this.props.workingStory.id}/sections`
     );
     if (result.status === 200) {
       this.props.setWorkingSections(result.data.sections);

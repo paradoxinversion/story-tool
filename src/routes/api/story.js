@@ -7,7 +7,7 @@ const actions = require("../../database/actions/index");
  * @param {*} req
  * @param {*} res
  */
-const addNewStory = async (req, res) => {
+const createStory = async (req, res) => {
   try {
     const newStory = await actions.story.addStory(
       req.body.title,
@@ -48,6 +48,7 @@ const deleteStory = async (req, res) => {
 const getUserStories = async (req, res) => {
   try {
     const stories = await actions.story.getUserStories(req.query.userId);
+
     res.status(200).json({
       message: "Found user stories",
       stories
@@ -200,7 +201,7 @@ const moveStoryPart = async (req, res) => {
 };
 
 module.exports = {
-  addNewStory,
+  createStory,
   deleteStory,
   getStoryByStoryId,
   createNewStorySection,

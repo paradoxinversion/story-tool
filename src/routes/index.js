@@ -33,6 +33,6 @@ router
   .put(storyController.editStorySection)
   .delete(storyController.deleteStorySection);
 
-router.route("/api/stories/new").post(storyController.addNewStory);
+router.route("/api/stories/new").post(storyController.createStory);
 
 module.exports = router;

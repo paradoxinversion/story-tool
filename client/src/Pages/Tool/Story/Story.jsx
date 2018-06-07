@@ -9,7 +9,7 @@ class Story extends Component {
 
   async componentDidMount() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStory._id}`
+      `http://localhost:3001/api/stories/${this.props.workingStory.id}`
     );
     if (result.status === 200) {
       this.props.setStory(result.data.story);
@@ -26,7 +26,7 @@ class Story extends Component {
                 if (
                   window.confirm("Are you sure you wish to delete this Story?")
                 ) {
-                  const result = await deleteStory(this.props.story._id);
+                  const result = await deleteStory(this.props.story.id);
 
                   if (result.status === 200) {
                     this.props.setWorkingStory(null);

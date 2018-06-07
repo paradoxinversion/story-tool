@@ -7,9 +7,15 @@ const Story = require("../schema/Story");
  * @param {string} userId
  */
 const getUserStories = async userId => {
-  const stories = await Story.find({ author: userId });
+  const rawStories = await Story.find({ author: userId });
+  const getStoryInstances = async story => {
+    return await story.returnStoryInstance();
+  };
+
+  const storiesMap = rawStories.map(getStoryInstances);
+  const stories = await Promise.all(storiesMap);
+
   if (stories) {
-    console.log(stories);
     return stories;
   }
 };
