@@ -2,7 +2,6 @@
 
 const addUser = require("../../database/actions/addUser");
 const getUserByName = require("../../database/actions/getUserByName");
-
 const addNewUser = async (req, res) => {
   try {
     const existingUser = await getUserByName(req.body.username);

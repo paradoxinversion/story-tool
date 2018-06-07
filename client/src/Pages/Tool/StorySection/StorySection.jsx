@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import deleteStorySection from "../../../toolCommands/section/deleteStorySection";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
 import axios from "axios";
+import store from "store";
+
 import "./StorySection.css";
 class StorySection extends Component {
   constructor(props) {
@@ -22,7 +24,8 @@ class StorySection extends Component {
     const result = await axios.get(
       `http://localhost:3001/api/stories/${this.props.workingStory.id}/${
         this.props.workingSection._id
-      }`
+      }`,
+      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
 
     if (result.status === 200) {
@@ -109,7 +112,7 @@ class StorySection extends Component {
                       )
                     ) {
                       const result = await deleteStorySection(
-                        this.props.story.id,
+                        this.props.workingStory.id,
                         this.state.section._id
                       );
 

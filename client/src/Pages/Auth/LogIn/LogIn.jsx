@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+import store from "store";
 class LogIn extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +31,8 @@ class LogIn extends Component {
     });
     if (result.status === 200) {
       this.props.setAuthentication(true, result.data.user);
+      store.set("token", { token: result.data.token });
+      console.log(store.get("token"));
       this.props.history.push("/tool/dashboard");
     }
   }

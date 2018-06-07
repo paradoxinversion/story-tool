@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+import store from "store";
+
 class NewLocation extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,8 @@ class NewLocation extends Component {
         name: this.state.name,
         content: this.state.content,
         storyId: this.props.story.id
-      }
+      },
+      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
     console.log(result);
 

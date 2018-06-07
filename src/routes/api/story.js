@@ -47,8 +47,7 @@ const deleteStory = async (req, res) => {
  */
 const getUserStories = async (req, res) => {
   try {
-    const stories = await actions.story.getUserStories(req.query.userId);
-
+    const stories = await actions.story.getUserStories(req.user.user.id);
     res.status(200).json({
       message: "Found user stories",
       stories

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
 import "./NewSection.css";
+import store from "store";
+
 class NewSection extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,8 @@ class NewSection extends Component {
         name: this.state.name,
         content: this.state.content,
         storyId: this.props.workingStory.id
-      }
+      },
+      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
     if (result.status == 200) {
       this.props.setMode("story-overview");

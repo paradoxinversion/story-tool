@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import deleteStory from "../../../toolCommands/story/deleteStory";
 import "./Story.css";
+import store from "store";
+
 class Story extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,8 @@ class Story extends Component {
 
   async componentDidMount() {
     const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStory.id}`
+      `http://localhost:3001/api/stories/${this.props.workingStory.id}`,
+      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
     if (result.status === 200) {
       this.props.setWorkingStory(result.data.story);
