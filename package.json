@@ -16,7 +16,7 @@
     "start": "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
     "start-debug": "concurrently \"mongod\" \"npm run start-server-debug\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive",
-    "heroku-postbuild": "npm install && cd client && npm install && npm run build"
+    "postinstall": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
