@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, Redirect, withRouter } from "react-router-dom";
-import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
+import axiosInstance from "../../axiosInstance";
+
 import "./Header.css";
 const Header = props => {
   if (props.authenticated) {
@@ -12,7 +13,9 @@ const Header = props => {
               <button
                 className="button"
                 onClick={async () => {
-                  await axios.get("http://localhost:3000/api/auth/log-out");
+                  await axiosInstance.get(
+                    "http://localhost:3000/api/auth/log-out"
+                  );
                   await props.setAuthentication(false, null);
                   props.history.push("/");
                 }}>

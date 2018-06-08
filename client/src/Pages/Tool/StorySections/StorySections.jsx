@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
-import axios from "axios";
+import axiosInstance from "../../../axiosInstance";
 import store from "store";
 
 class StorySections extends Component {
@@ -9,10 +9,8 @@ class StorySections extends Component {
     super(props);
   }
   async getSections() {
-    const result = await axios.get(
-      `http://localhost:3001/api/stories/${
-        this.props.workingStory.id
-      }/sections`,
+    const result = await axiosInstance.get(
+      `/stories/${this.props.workingStory.id}/sections`,
       { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
     if (result.status === 200) {

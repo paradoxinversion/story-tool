@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../axiosInstance";
+
 import "./StoryParts.css";
 const StoryParts = props => {
   if (props.storyParts.length === 0) {
@@ -23,10 +23,10 @@ const StoryParts = props => {
               <button
                 className="button story-part__options__item"
                 onClick={async () => {
-                  const result = await axios.get(
-                    `http://localhost:3000/api/stories/${
-                      props.workingStory.id
-                    }/${section._id}/move?up=false`
+                  const result = await axiosInstance.get(
+                    `/stories/${props.workingStory.id}/${
+                      section._id
+                    }/move?up=false`
                   );
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);
@@ -37,10 +37,10 @@ const StoryParts = props => {
               <button
                 className="button story-part__options__item"
                 onClick={async () => {
-                  const result = await axios.get(
-                    `http://localhost:3000/api/stories/${
-                      props.workingStory.id
-                    }/${section._id}/move?up=true`
+                  const result = await axiosInstance.get(
+                    `/stories/${props.workingStory.id}/${
+                      section._id
+                    }/move?up=true`
                   );
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);

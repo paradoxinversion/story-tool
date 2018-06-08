@@ -1,8 +1,8 @@
 "use strict";
 
 import React, { Component, Fragment } from "react";
-import axios from "axios";
-import { Redirect, withRouter } from "react-router-dom";
+
+import { withRouter } from "react-router-dom";
 import createStory from "../../../toolCommands/story/createStory";
 class NewStory extends Component {
   constructor(props) {

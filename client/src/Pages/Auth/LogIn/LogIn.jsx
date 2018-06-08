@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
-import axios from "axios";
-import { Redirect, withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import axiosInstance from "../../../axiosInstance";
+import { withRouter } from "react-router-dom";
 import store from "store";
 class LogIn extends Component {
   constructor(props) {
@@ -25,7 +25,11 @@ class LogIn extends Component {
   }
   async handleLogIn(event) {
     event.preventDefault();
-    const result = await axios.post("http://localhost:3001/api/auth/log-in", {
+    // const result = await axios.post("api/auth/log-in", {
+    //   username: this.state.name,
+    //   password: this.state.password
+    // });
+    const result = await axiosInstance.post("/auth/log-in", {
       username: this.state.name,
       password: this.state.password
     });

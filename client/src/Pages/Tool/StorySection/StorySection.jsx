@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import deleteStorySection from "../../../toolCommands/section/deleteStorySection";
-import StoryParts from "../../../Components/StoryParts/StoryParts";
-import axios from "axios";
+import axiosInstance from "../../../axiosInstance";
 import store from "store";
 
 import "./StorySection.css";
@@ -21,10 +20,8 @@ class StorySection extends Component {
   }
 
   async getSectionData() {
-    const result = await axios.get(
-      `http://localhost:3001/api/stories/${this.props.workingStory.id}/${
-        this.props.workingSection._id
-      }`,
+    const result = await axiosInstance.get(
+      `/stories/${this.props.workingStory.id}/${this.props.workingSection._id}`,
       { headers: { Authorization: `Bearer ${store.get("token").token}` } }
     );
 
@@ -75,10 +72,8 @@ class StorySection extends Component {
 
   async handleEditSection(event) {
     event.preventDefault();
-    const result = await axios.put(
-      `http://localhost:3001/api/stories/${this.props.story.id}/${
-        this.props.workingSection._id
-      }`,
+    const result = await axiosInstance.put(
+      `/stories/${this.props.story.id}/${this.props.workingSection._id}`,
       {
         name: this.state.name,
         content: this.state.content

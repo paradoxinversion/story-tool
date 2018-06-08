@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import axios from "axios";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import axiosInstance from "../../../axiosInstance";
 import "./NewSection.css";
 import store from "store";
 
@@ -27,10 +27,8 @@ class NewSection extends Component {
   }
   async handleNewSection(event) {
     event.preventDefault();
-    const result = await axios.post(
-      `http://localhost:3001/api/stories/${
-        this.props.workingStory.id
-      }/new-section`,
+    const result = await axiosInstance.post(
+      `/stories/${this.props.workingStory.id}/new-section`,
       {
         name: this.state.name,
         content: this.state.content,

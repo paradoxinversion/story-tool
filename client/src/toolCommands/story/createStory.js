@@ -1,10 +1,10 @@
-import axios from "axios";
+import axiosInstance from "../../axiosInstance";
 import store from "store";
 
 const createStory = async (title, synopsis, userId) => {
   try {
-    const result = await axios.post(
-      "http://localhost:3001/api/stories/new",
+    const result = await axiosInstance.post(
+      "/stories/new",
       {
         title,
         synopsis,

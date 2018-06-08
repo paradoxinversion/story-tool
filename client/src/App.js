@@ -17,6 +17,7 @@ class App extends Component {
       user: null
     };
     this.setAuthentication = this.setAuthentication.bind(this);
+    console.log(process.env);
   }
   setAuthentication(authenticationStatus, user = null) {
     this.setState({

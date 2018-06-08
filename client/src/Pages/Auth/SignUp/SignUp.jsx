@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from "react";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import axiosInstance from "../../../axiosInstance";
 
 class SignUp extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class SignUp extends Component {
   }
   async handleSignUp(event) {
     event.preventDefault();
-    result = await axios.post("http://localhost:3001/api/auth/sign-up", {
+    result = await axiosInstance.post("/auth/sign-up", {
       username: this.state.name,
       password: this.state.password
     });
