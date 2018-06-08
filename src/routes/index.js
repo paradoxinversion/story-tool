@@ -8,18 +8,18 @@ const auth = require("./api/auth");
 const userController = require("./api/user");
 const storyController = require("./api/story");
 
-router.post("/api/auth/sign-up", userController.addNewUser);
-router.post("/api/auth/log-in", passport.authenticate("local"), auth.loggedIn);
-router.get("/api/auth/log-out", auth.logOut);
+router.post("/auth/sign-up", userController.addNewUser);
+router.post("/auth/log-in", passport.authenticate("local"), auth.loggedIn);
+router.get("/auth/log-out", auth.logOut);
 router
-  .route("/api/user/stories")
+  .route("/user/stories")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.getUserStories
   );
 
 router
-  .route("/api/stories/:storyId")
+  .route("/stories/:storyId")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.getStoryByStoryId
@@ -30,26 +30,26 @@ router
   );
 
 router
-  .route("/api/stories/:storyId/new-section")
+  .route("/stories/:storyId/new-section")
   .post(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.createNewStorySection
   );
 router
-  .route("/api/stories/:storyId/:sectionId/move")
+  .route("/stories/:storyId/:sectionId/move")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.moveStoryPart
   );
 router
-  .route("/api/stories/:storyId/sections")
+  .route("/stories/:storyId/sections")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.getAllStorySections
   );
 
 router
-  .route("/api/stories/:storyId/:sectionId")
+  .route("/stories/:storyId/:sectionId")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.getSingleStorySection
@@ -64,7 +64,7 @@ router
   );
 
 router
-  .route("/api/stories/new")
+  .route("/stories/new")
   .post(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.createStory

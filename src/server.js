@@ -7,15 +7,14 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongooseClient = require("./database/client");
 const getUserByName = require("./database/actions/getUserByName");
-const app = express();
-
 const User = require("./database/schema/User");
+
+const app = express();
 
 app.use(logger("dev"));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, "public")));
@@ -56,7 +55,14 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", index);
+app.use("/api", index);
+
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.resolve(__dirname, "..", "client/dist")));
+  app.get("*", function(req, res) {
+    res.sendFile(path.resolve(__dirname, "..", "client/dist/index.html"));
+  });
+}
 
 app.use(function(req, res, next) {
   var err = new Error("Not Found");
@@ -69,4 +75,4 @@ app.use(function(err, req, res, next) {
   res.send(err.status);
 });
 
-app.listen(3001, () => console.log("Example app listening on port 3001!"));
+app.listen(3001, () => console.log("StoryTool Server Started"));
