@@ -75,4 +75,6 @@ app.use(function(err, req, res, next) {
   res.send(err.status);
 });
 
-app.listen(3001, () => console.log("StoryTool Server Started"));
+app.listen(process.env.PORT || 3001, () =>
+  console.log("StoryTool Server Started")
+);
