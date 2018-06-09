@@ -29,9 +29,6 @@ class Story extends Component {
             <p className="story__synopsis">
               {this.props.workingStory.synopsis}
             </p>
-            {/* <p className="story__parts">
-              {this.props.workingStory.sections.length} parts written
-            </p> */}
             <div className="panel panel--horizontal story__commands">
               <button
                 className="button"
@@ -41,7 +38,9 @@ class Story extends Component {
                       "Are you sure you wish to delete this Story?"
                     )
                   ) {
-                    const result = await deleteStory(this.props.story.id);
+                    const result = await deleteStory(
+                      this.props.workingStory.id
+                    );
 
                     if (result.status === 200) {
                       this.props.setWorkingStory(null);

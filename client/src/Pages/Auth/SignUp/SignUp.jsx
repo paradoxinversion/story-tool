@@ -1,12 +1,17 @@
+"use strict";
+
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
+import attemptUserSignUp from "../../../toolCommands/user/attemptUserSignUp";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      password: ""
+      password: "",
+      error: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,16 +29,24 @@ class SignUp extends Component {
   }
   async handleSignUp(event) {
     event.preventDefault();
-    result = await axiosInstance.post("/auth/sign-up", {
-      username: this.state.name,
-      password: this.state.password
-    });
-
+    // result = await axiosInstance.post("/auth/sign-up", {
+    //   username: this.state.name,
+    //   password: this.state.password
+    // });
+    const result = await attemptUserSignUp(
+      this.state.name,
+      this.state.password
+    );
     console.log(result);
     if (result.status === 200) {
-      console.log("success");
+      this.props.history.push("/auth/login");
     } else {
-      console.log("something went wrong");
+      console.log("error...", result);
+      this.setState({
+        error: {
+          message: result.data.message
+        }
+      });
     }
   }
 
@@ -74,6 +87,9 @@ class SignUp extends Component {
                 minLength="4"
                 maxLength="12"
               />
+              {this.state.error !== null ? (
+                <p>{this.state.error.message}</p>
+              ) : null}
               <button
                 className="button"
                 onClick={this.handleSignUp}
@@ -101,4 +117,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

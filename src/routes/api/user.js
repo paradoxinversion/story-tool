@@ -12,9 +12,12 @@ const addNewUser = async (req, res) => {
         message: "User added"
       });
     } else {
+      res.status(409).json({
+        message: "User Already Exists"
+      });
     }
   } catch (e) {
-    console.log(e);
+    console.log("Error adding user::", e);
     res.json(e);
   }
 };

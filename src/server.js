@@ -24,7 +24,8 @@ passport.use(
     try {
       const user = await getUserByName(username);
       if (!user) return done(null, false);
-      if (!user.verifyPassword(password)) return done(null, false);
+      const passwordVerified = await user.verifyPassword(password);
+      if (!passwordVerified) return done(null, false);
       return done(null, user);
     } catch (e) {
       return done(e);

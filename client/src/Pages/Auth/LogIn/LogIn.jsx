@@ -7,7 +7,8 @@ class LogIn extends Component {
     super(props);
     this.state = {
       name: "",
-      password: ""
+      password: "",
+      error: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,14 +26,29 @@ class LogIn extends Component {
   }
   async handleLogIn(event) {
     event.preventDefault();
-    const result = await axiosInstance.post("/auth/log-in", {
-      username: this.state.name,
-      password: this.state.password
-    });
+    const result = await axiosInstance.post(
+      "/auth/log-in",
+      {
+        username: this.state.name,
+        password: this.state.password
+      },
+      {
+        validateStatus: function(status) {
+          return (status >= 200 && status < 300) || status === 401;
+        }
+      }
+    );
+    console.log(result);
     if (result.status === 200) {
       this.props.setAuthentication(true, result.data.user);
       store.set("token", { token: result.data.token });
       this.props.history.push("/tool/dashboard");
+    } else {
+      this.setState({
+        error: {
+          message: "Invalid username or password"
+        }
+      });
     }
   }
   render() {
@@ -68,6 +84,7 @@ class LogIn extends Component {
             maxLength="12"
             onChange={this.handleInputChange}
           />
+          {this.state.error !== null ? <p>{this.state.error.message}</p> : null}
           <button className="button" type="submit" onClick={this.handleLogIn}>
             {" "}
             Log In{" "}
