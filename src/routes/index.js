@@ -35,12 +35,7 @@ router
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.createNewStorySection
   );
-router
-  .route("/stories/:storyId/:sectionId/move")
-  .get(
-    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
-    storyController.moveStoryPart
-  );
+
 router
   .route("/stories/:storyId/sections")
   .get(
@@ -63,6 +58,12 @@ router
     storyController.deleteStorySection
   );
 
+router
+  .route("/stories/:storyId/:sectionId/move")
+  .get(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    storyController.moveStoryPart
+  );
 router
   .route("/stories/new")
   .post(

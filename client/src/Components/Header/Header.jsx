@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
+import attemptUserLogOut from "../../toolCommands/user/attemtpUserLogOut";
 
 import "./Header.css";
 const Header = props => {
@@ -13,9 +14,7 @@ const Header = props => {
               <button
                 className="button"
                 onClick={async () => {
-                  await axiosInstance.get(
-                    "http://localhost:3000/api/auth/log-out"
-                  );
+                  await attemptUserLogOut();
                   await props.setAuthentication(false, null);
                   props.history.push("/");
                 }}>

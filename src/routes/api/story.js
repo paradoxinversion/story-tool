@@ -123,7 +123,7 @@ const getAllStorySections = async (req, res) => {
  */
 const getSingleStorySection = async (req, res) => {
   try {
-    console.log("Getting section");
+    console.log("getSingleStorySection");
     console.log(req.params);
     const section = await actions.section.getStorySection(req.params.sectionId);
     res.status(200).json({
@@ -143,6 +143,7 @@ const getSingleStorySection = async (req, res) => {
  */
 const editStorySection = async (req, res) => {
   try {
+    console.log("editStorySection");
     const section = await actions.section.editStorySection(
       req.body.name,
       req.body.content,

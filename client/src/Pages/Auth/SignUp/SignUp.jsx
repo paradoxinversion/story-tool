@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import axiosInstance from "../../../axiosInstance";
 import attemptUserSignUp from "../../../toolCommands/user/attemptUserSignUp";
 
 class SignUp extends Component {
@@ -29,10 +28,6 @@ class SignUp extends Component {
   }
   async handleSignUp(event) {
     event.preventDefault();
-    // result = await axiosInstance.post("/auth/sign-up", {
-    //   username: this.state.name,
-    //   password: this.state.password
-    // });
     const result = await attemptUserSignUp(
       this.state.name,
       this.state.password

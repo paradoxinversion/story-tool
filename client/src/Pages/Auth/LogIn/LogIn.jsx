@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axiosInstance from "../../../axiosInstance";
+import attemptUserLogIn from "../../../toolCommands/user/attemptUserLogIn";
 import { withRouter } from "react-router-dom";
 import store from "store";
 class LogIn extends Component {
@@ -26,19 +26,7 @@ class LogIn extends Component {
   }
   async handleLogIn(event) {
     event.preventDefault();
-    const result = await axiosInstance.post(
-      "/auth/log-in",
-      {
-        username: this.state.name,
-        password: this.state.password
-      },
-      {
-        validateStatus: function(status) {
-          return (status >= 200 && status < 300) || status === 401;
-        }
-      }
-    );
-    console.log(result);
+    const result = await attemptUserLogIn(this.state.name, this.state.password);
     if (result.status === 200) {
       this.props.setAuthentication(true, result.data.user);
       store.set("token", { token: result.data.token });

@@ -1,4 +1,5 @@
 import React from "react";
+import moveSection from "../../toolCommands/section/moveSection";
 import axiosInstance from "../../axiosInstance";
 import store from "store";
 
@@ -27,16 +28,12 @@ const StoryParts = props => {
               <button
                 className="button story-part__options__item"
                 onClick={async () => {
-                  const result = await axiosInstance.get(
-                    `/stories/${props.workingStory.id}/${
-                      section._id
-                    }/move?up=false`,
-                    {
-                      headers: {
-                        Authorization: `Bearer ${store.get("token").token}`
-                      }
-                    }
+                  const result = await moveSection(
+                    props.workingStory.id,
+                    section._id,
+                    false
                   );
+
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);
                   }
@@ -46,15 +43,10 @@ const StoryParts = props => {
               <button
                 className="button story-part__options__item"
                 onClick={async () => {
-                  const result = await axiosInstance.get(
-                    `/stories/${props.workingStory.id}/${
-                      section._id
-                    }/move?up=true`,
-                    {
-                      headers: {
-                        Authorization: `Bearer ${store.get("token").token}`
-                      }
-                    }
+                  const result = await moveSection(
+                    props.workingStory.id,
+                    section._id,
+                    true
                   );
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);

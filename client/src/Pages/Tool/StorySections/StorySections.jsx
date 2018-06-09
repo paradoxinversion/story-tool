@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
-import axiosInstance from "../../../axiosInstance";
-import store from "store";
+import getStorySections from "../../../toolCommands/section/getStorySections";
 
 class StorySections extends Component {
   constructor(props) {
     super(props);
   }
   async getSections() {
-    const result = await axiosInstance.get(
-      `/stories/${this.props.workingStory.id}/sections`,
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
-    );
+    const result = await getStorySections(this.props.workingStory.id);
     if (result.status === 200) {
       this.props.setWorkingSections(result.data.sections);
     }

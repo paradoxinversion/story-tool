@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import axiosInstance from "../../../axiosInstance";
 import deleteStory from "../../../toolCommands/story/deleteStory";
+import getStory from "../../../toolCommands/story/getStory";
 import "./Story.css";
-import store from "store";
 
 class Story extends Component {
   constructor(props) {
@@ -11,10 +10,7 @@ class Story extends Component {
   }
 
   async componentDidMount() {
-    const result = await axiosInstance.get(
-      `/stories/${this.props.workingStory.id}`,
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
-    );
+    const result = await getStory(this.props.workingStory.id);
     if (result.status === 200) {
       this.props.setWorkingStory(result.data.story);
     }

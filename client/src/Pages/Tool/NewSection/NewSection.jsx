@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import axiosInstance from "../../../axiosInstance";
+import createStorySection from "../../../toolCommands/section/createStorySection";
 import "./NewSection.css";
-import store from "store";
 
 class NewSection extends Component {
   constructor(props) {
@@ -27,14 +26,10 @@ class NewSection extends Component {
   }
   async handleNewSection(event) {
     event.preventDefault();
-    const result = await axiosInstance.post(
-      `/stories/${this.props.workingStory.id}/new-section`,
-      {
-        name: this.state.name,
-        content: this.state.content,
-        storyId: this.props.workingStory.id
-      },
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
+    const result = await createStorySection(
+      this.state.name,
+      this.state.conent,
+      this.props.workingStory.id
     );
     if (result.status == 200) {
       this.props.setMode("story-overview");

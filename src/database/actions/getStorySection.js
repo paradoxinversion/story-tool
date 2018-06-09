@@ -7,9 +7,13 @@ const Section = require("../schema/Section");
  * @param {string} sectionId
  */
 const getStorySection = async sectionId => {
-  const section = await Section.findOne({ _id: sectionId });
-  if (section) {
-    return section;
+  try {
+    const section = await Section.findOne({ _id: sectionId });
+    if (section) {
+      return section;
+    }
+  } catch (e) {
+    console.log(e);
   }
 };
 
