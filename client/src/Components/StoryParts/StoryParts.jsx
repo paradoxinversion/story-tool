@@ -1,5 +1,6 @@
 import React from "react";
 import axiosInstance from "../../axiosInstance";
+import store from "store";
 
 import "./StoryParts.css";
 const StoryParts = props => {
@@ -9,12 +10,7 @@ const StoryParts = props => {
     return (
       <div>
         {props.storyParts.map(section => (
-          <div
-            className="panel panel--horizontal"
-            onClick={async () => {
-              await props.setWorkingSection(section);
-              props.setMode("view-section");
-            }}>
+          <div className="panel panel--horizontal">
             <p className="story-part__index">{section.number + 1}</p>
             <div className="story-part__title" key={section._id}>
               {section.name}
@@ -23,10 +19,23 @@ const StoryParts = props => {
               <button
                 className="button story-part__options__item"
                 onClick={async () => {
+                  await props.setWorkingSection(section);
+                  props.setMode("view-section");
+                }}>
+                Open
+              </button>
+              <button
+                className="button story-part__options__item"
+                onClick={async () => {
                   const result = await axiosInstance.get(
                     `/stories/${props.workingStory.id}/${
                       section._id
-                    }/move?up=false`
+                    }/move?up=false`,
+                    {
+                      headers: {
+                        Authorization: `Bearer ${store.get("token").token}`
+                      }
+                    }
                   );
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);
@@ -40,7 +49,12 @@ const StoryParts = props => {
                   const result = await axiosInstance.get(
                     `/stories/${props.workingStory.id}/${
                       section._id
-                    }/move?up=true`
+                    }/move?up=true`,
+                    {
+                      headers: {
+                        Authorization: `Bearer ${store.get("token").token}`
+                      }
+                    }
                   );
                   if (result.status === 200) {
                     await props.setWorkingSections(result.data.updatedSections);
