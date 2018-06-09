@@ -1,7 +1,7 @@
 {
-  "name": "react-starter",
+  "name": "story-tool-client",
   "version": "0.0.0",
-  "description": "A simple react.js boilerplate",
+  "description": "StoryTool Client",
   "main": "./src/index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack-dev.config.js --open",
