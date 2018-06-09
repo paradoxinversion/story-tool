@@ -25,10 +25,6 @@ class LogIn extends Component {
   }
   async handleLogIn(event) {
     event.preventDefault();
-    // const result = await axios.post("api/auth/log-in", {
-    //   username: this.state.name,
-    //   password: this.state.password
-    // });
     const result = await axiosInstance.post("/auth/log-in", {
       username: this.state.name,
       password: this.state.password
@@ -36,7 +32,6 @@ class LogIn extends Component {
     if (result.status === 200) {
       this.props.setAuthentication(true, result.data.user);
       store.set("token", { token: result.data.token });
-      console.log(store.get("token"));
       this.props.history.push("/tool/dashboard");
     }
   }
