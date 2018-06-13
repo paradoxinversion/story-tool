@@ -10,7 +10,7 @@ const createStory = async (title, synopsis, userId) => {
         synopsis,
         userId
       },
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
+      { headers: { Authorization: `Bearer ${store.get("storytool").token}` } }
     );
     return result;
   } catch (e) {

@@ -9,7 +9,7 @@ const editStorySection = async (storyId, sectionId, name, content) => {
         content
       },
       {
-        headers: { Authorization: `Bearer ${store.get("token").token}` }
+        headers: { Authorization: `Bearer ${store.get("storytool").token}` }
       }
     );
 

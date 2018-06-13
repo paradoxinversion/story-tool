@@ -1,12 +1,13 @@
 import axiosInstance from "../../axiosInstance";
 
-const attemptUserSignUp = async (name, password) => {
+const attemptUserSignUp = async (name, password, isGuest) => {
   try {
     const result = await axiosInstance.post(
       "/auth/sign-up",
       {
         username: name,
-        password: password
+        password: password,
+        isGuest
       },
       {
         validateStatus: function(status) {

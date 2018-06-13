@@ -10,7 +10,7 @@ const createStorySection = async (name, content, storyId) => {
         content,
         storyId
       },
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
+      { headers: { Authorization: `Bearer ${store.get("storytool").token}` } }
     );
     return result;
   } catch (e) {

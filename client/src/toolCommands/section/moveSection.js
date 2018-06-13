@@ -6,7 +6,7 @@ const moveSection = async (storyId, sectionId, up) => {
     `/stories/${storyId}/${sectionId}/move?up=${up}`,
     {
       headers: {
-        Authorization: `Bearer ${store.get("token").token}`
+        Authorization: `Bearer ${store.get("storytool").token}`
       }
     }
   );

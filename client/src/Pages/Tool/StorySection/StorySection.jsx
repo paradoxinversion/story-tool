@@ -87,7 +87,7 @@ class StorySection extends Component {
         content: this.state.content
       },
       {
-        headers: { Authorization: `Bearer ${store.get("token").token}` }
+        headers: { Authorization: `Bearer ${store.get("storytool").token}` }
       }
     );
 

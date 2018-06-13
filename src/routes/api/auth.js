@@ -1,13 +1,11 @@
 "use strict";
 
-const passport = require("passport");
 const getUserStories = require("../../database/actions/getUserStories");
 const createWebtoken = require("../../utility/createWebtoken");
-
+const readWebToken = require("../../utility/readWebtoken");
 const loggedIn = async (req, res) => {
   const stories = await getUserStories(req.user._id);
   const user = req.user.returnUserInstance();
-  console.log(user);
   const token = createWebtoken(user);
   res.status(200).json({
     message: "Log In Successful",
@@ -16,16 +14,19 @@ const loggedIn = async (req, res) => {
   });
 };
 
-const isAuthenticated = (req, res) => {
-  res.status(200).json({
-    message: "Log In Successful",
-    user: req.user.returnUserInstance()
-  });
+const checkToken = (req, res) => {
+  const user = readWebToken(req.query.token);
+  console.log(user);
+  if (user) {
+    res.status(200).json({
+      message: "Authorization OK",
+      user: user
+    });
+  } else {
+    res.status(400).json({
+      message: "Not Authorized"
+    });
+  }
 };
 
-const logOut = (req, res) => {
-  res.status(200).json({
-    message: "Log out successful"
-  });
-};
-module.exports = { loggedIn, logOut };
+module.exports = { loggedIn, logOut, checkToken };

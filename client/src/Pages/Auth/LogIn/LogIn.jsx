@@ -24,12 +24,13 @@ class LogIn extends Component {
       [name]: value
     });
   }
+
   async handleLogIn(event) {
     event.preventDefault();
     const result = await attemptUserLogIn(this.state.name, this.state.password);
     if (result.status === 200) {
       this.props.setAuthentication(true, result.data.user);
-      store.set("token", { token: result.data.token });
+      store.set("storytool", { token: result.data.token });
       this.props.history.push("/tool/dashboard");
     } else {
       this.setState({
@@ -38,6 +39,10 @@ class LogIn extends Component {
         }
       });
     }
+  }
+
+  async componentDidMount() {
+    console.log(this.props.user);
   }
   render() {
     return (
@@ -55,7 +60,7 @@ class LogIn extends Component {
             autoComplete="username"
             required={true}
             minLength="4"
-            maxLength="12"
+            maxLength="32"
             onChange={this.handleInputChange}
           />
           <label className="vertical-form__label" htmlFor="password">
@@ -69,7 +74,7 @@ class LogIn extends Component {
             autoComplete="current-password"
             required={true}
             minLength="4"
-            maxLength="12"
+            maxLength="64"
             onChange={this.handleInputChange}
           />
           {this.state.error !== null ? <p>{this.state.error.message}</p> : null}

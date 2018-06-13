@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import attemptUserSignUp from "../../../toolCommands/user/attemptUserSignUp";
-
+import store from "store";
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +15,7 @@ class SignUp extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.signUpGuest = this.signUpGuest.bind(this);
   }
 
   handleInputChange(event) {
@@ -30,7 +31,8 @@ class SignUp extends Component {
     event.preventDefault();
     const result = await attemptUserSignUp(
       this.state.name,
-      this.state.password
+      this.state.password,
+      false
     );
     console.log(result);
     if (result.status === 200) {
@@ -42,6 +44,19 @@ class SignUp extends Component {
           message: result.data.message
         }
       });
+    }
+  }
+
+  async signUpGuest() {
+    const result = await attemptUserSignUp(
+      this.state.name,
+      this.state.password,
+      true
+    );
+    if (result.status === 200) {
+      this.props.setAuthentication(true, result.data.user);
+      store.set("storytool", { token: result.data.token });
+      this.props.history.push("/tool/dashboard");
     }
   }
 
@@ -104,7 +119,9 @@ class SignUp extends Component {
               While your guest account is active, you will be able to complete
               signup without losing any data.
             </p>
-            <button className="button">Sign in as a guest</button>
+            <button onClick={this.signUpGuest} className="button">
+              Sign in as a guest
+            </button>
           </div>
         </div>
       </div>

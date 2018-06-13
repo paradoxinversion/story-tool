@@ -10,7 +10,7 @@ const storyController = require("./api/story");
 
 router.post("/auth/sign-up", userController.addNewUser);
 router.post("/auth/log-in", passport.authenticate("local"), auth.loggedIn);
-router.get("/auth/log-out", auth.logOut);
+router.get("/auth/check-token", auth.checkToken);
 router
   .route("/user/stories")
   .get(

@@ -32,7 +32,7 @@ class NewLocation extends Component {
         content: this.state.content,
         storyId: this.props.story.id
       },
-      { headers: { Authorization: `Bearer ${store.get("token").token}` } }
+      { headers: { Authorization: `Bearer ${store.get("storytool").token}` } }
     );
     console.log(result);
 

@@ -3,7 +3,7 @@ import store from "store";
 const getStorySection = async (storyId, sectionId) => {
   try {
     const result = await axiosInstance.get(`/stories/${storyId}/${sectionId}`, {
-      headers: { Authorization: `Bearer ${store.get("token").token}` }
+      headers: { Authorization: `Bearer ${store.get("storytool").token}` }
     });
 
     return result;

@@ -16,8 +16,9 @@ const addUser = async (username, password, isGuest) => {
     password,
     isGuest
   );
-  console.log(isGuest);
+
   if (isGuest) {
+    console.log("Creating guest account");
     username = Math.random();
     password = "trial";
   }

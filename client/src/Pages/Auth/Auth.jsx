@@ -16,7 +16,13 @@ class Auth extends Component {
     return (
       <Fragment>
         <Switch>
-          <Route exact path={`${match.url}/signup`} component={SignUp} />
+          <Route
+            exact
+            path={`${match.url}/signup`}
+            render={() => (
+              <SignUp setAuthentication={this.props.setAuthentication} />
+            )}
+          />
           <Route
             path={`${match.url}/login`}
             render={() => <LogIn {...this.props} />}
