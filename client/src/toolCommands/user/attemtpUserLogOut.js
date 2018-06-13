@@ -1,11 +1,8 @@
 import axiosInstance from "../../axiosInstance";
-
+import store from "store";
 const attemptUserLogOut = async () => {
   try {
-    const result = await axiosInstance.get(
-      "http://localhost:3000/api/auth/log-out"
-    );
-    return result;
+    store.remove("storytool");
   } catch (e) {
     console.log(e);
   }

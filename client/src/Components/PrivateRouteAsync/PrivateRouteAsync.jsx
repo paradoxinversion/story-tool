@@ -12,8 +12,8 @@ class PrivateRouteAsync extends React.Component {
   }
 
   async componentDidMount() {
-    const token = store.get("storytool").token;
     const authenticationResult = await this.props.checkAuthentication();
+    console.log("AR:::", authenticationResult);
     if (authenticationResult === true) {
       this.setState({
         loading: false,
@@ -28,7 +28,7 @@ class PrivateRouteAsync extends React.Component {
       <Route
         {...rest}
         render={props =>
-          this.state.isAuthenticated ? (
+          this.props.authenticated ? (
             <Component {...rest} {...props} />
           ) : this.state.loading ? (
             <div>LOADING</div>

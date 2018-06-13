@@ -29,4 +29,4 @@ const checkToken = (req, res) => {
   }
 };
 
-module.exports = { loggedIn, logOut, checkToken };
+module.exports = { loggedIn, checkToken };
