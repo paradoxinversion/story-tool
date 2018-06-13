@@ -18,15 +18,21 @@ const addUser = async (username, password, isGuest) => {
   );
 
   if (isGuest) {
-    console.log("Creating guest account");
-    username = Math.random();
-    password = "trial";
+    username =
+      Date.now() +
+      Math.random()
+        .toString()
+        .slice(2);
+    password = Math.random()
+      .toString()
+      .slice(2);
   }
   try {
     const hashedPass = await bcrypt.hash(password, 10);
     const newUser = new User({
       username,
-      password: hashedPass
+      password: hashedPass,
+      isGuest
     });
 
     await newUser.save();

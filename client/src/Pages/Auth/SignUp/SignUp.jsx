@@ -115,10 +115,10 @@ class SignUp extends Component {
               {" "}
               If you prefer not to commit to a sign up yet, you can also sign in
               as a guest. This gives you access to all features of a full
-              account with the caveat that it will self-destruct in 24 hours.
-              While your guest account is active, you will be able to complete
-              signup without losing any data.
+              account with the caveat that you will lose your data when your
+              browser&amp;s storage is cleared or you log out.
             </p>
+
             <button onClick={this.signUpGuest} className="button">
               Sign in as a guest
             </button>

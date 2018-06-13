@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import store from "store";
 
@@ -7,6 +7,7 @@ import Header from "./Components/Header/Header";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Tool from "./Pages/Tool/Tool";
+import UserSettings from "./Pages/UserSettings/UserSettings";
 import PrivateRouteAsync from "./Components/PrivateRouteAsync/PrivateRouteAsync";
 import checkToken from "./toolCommands/user/checkToken";
 import "normalize.css";
@@ -23,31 +24,26 @@ class App extends Component {
     this.checkClientAuthentication = this.checkClientAuthentication.bind(this);
   }
   async checkClientAuthentication() {
-    const userData = store.get("storytool");
-    if (userData) {
-      const token = userData.token;
-      if (token) {
+    try {
+      const userData = store.get("storytool");
+      if (userData) {
+        const token = userData.token;
         const tokenResult = await checkToken(token);
         if (tokenResult.status === 200) {
           await this.setAuthentication(true, tokenResult.data.user.user);
+        } else {
+          // store.remove("storytool");
         }
         return true;
       } else {
         return false;
       }
+    } catch (e) {
+      console.log(e);
     }
   }
   async componentDidMount() {
-    const userData = store.get("storytool");
-    if (userData) {
-      const token = userData.token;
-      if (token) {
-        const tokenResult = await checkToken(token);
-        if (tokenResult.status === 200) {
-          await this.setAuthentication(true, tokenResult.data.user.user);
-        }
-      }
-    }
+    this.checkClientAuthentication();
   }
   setAuthentication(authenticationStatus, user = null) {
     this.setState({
@@ -70,13 +66,22 @@ class App extends Component {
             path="/auth"
             render={() => <Auth setAuthentication={this.setAuthentication} />}
           />
-          <PrivateRouteAsync
-            path="/tool"
-            authenticated={this.state.isAuthenticated}
-            checkAuthentication={this.checkClientAuthentication}
-            user={this.state.user}
-            component={Tool}
-          />
+          <Switch>
+            <PrivateRouteAsync
+              path="/tool"
+              authenticated={this.state.isAuthenticated}
+              checkAuthentication={this.checkClientAuthentication}
+              user={this.state.user}
+              component={Tool}
+            />
+            <PrivateRouteAsync
+              path="/settings"
+              authenticated={this.state.isAuthenticated}
+              checkAuthentication={this.checkClientAuthentication}
+              user={this.state.user}
+              component={UserSettings}
+            />
+          </Switch>
         </div>
       </Router>
     );

@@ -19,6 +19,10 @@ class PrivateRouteAsync extends React.Component {
         loading: false,
         isAuthenticated: true
       });
+    } else {
+      this.setState({
+        loading: false
+      });
     }
   }
 

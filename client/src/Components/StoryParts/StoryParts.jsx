@@ -11,7 +11,7 @@ const StoryParts = props => {
     return (
       <div>
         {props.storyParts.map(section => (
-          <div className="panel panel--horizontal">
+          <div key={section._id} className="panel panel--horizontal story-part">
             <p className="story-part__index">{section.number + 1}</p>
             <div className="story-part__title" key={section._id}>
               {section.name}

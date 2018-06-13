@@ -23,7 +23,7 @@ const addNewUser = async (req, res) => {
     } else {
       const existingUser = await getUserByName(req.body.username);
       if (!existingUser) {
-        await addUser(req.body.username, req.body.password, res.body.isGuest);
+        await addUser(req.body.username, req.body.password, req.body.isGuest);
 
         res.status(200).json({
           message: "New Standard User added"

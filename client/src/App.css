@@ -1,4 +1,8 @@
-.button {
+* {
+  box-sizing: border-box;
+}
+
+button {
   border-radius: 4px;
   font-size: 18px;
   padding: 1rem;
@@ -8,7 +12,7 @@
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .title {
@@ -26,10 +30,10 @@
 }
 
 /* A flex container used for the dashboard */
-.horizontal-container {
+/* .horizontal-container {
   display: flex;
   height: 100%;
-}
+} */
 
 .panel {
   display: flex;
@@ -44,9 +48,9 @@
   margin: auto;
 }
 
-.panel--horizontal {
+/* .panel--horizontal {
   flex-direction: row;
-}
+} */
 
 /* Forms */
 .vertical-form {
@@ -91,7 +95,7 @@
 .workspace-container {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  padding: 1rem;
   width: 100%;
 }
 
@@ -100,4 +104,17 @@
   border-radius: 6px;
   border-color: lightgrey;
   padding: 1rem;
+}
+
+@media (min-width: 426px) {
+  .App {
+    height: 100vh;
+  }
+  .horizontal-container {
+    display: flex;
+    height: 100%;
+  }
+  .panel--horizontal {
+    flex-direction: row;
+  }
 }

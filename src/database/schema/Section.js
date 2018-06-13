@@ -14,7 +14,8 @@ const sectionSchema = Schema({
   story: {
     type: Schema.Types.ObjectId,
     ref: "Story"
-  }
+  },
+  createdAt: { type: Date, default: Date.now }
 });
 
 sectionSchema.methods.returnStoryInstance = function(err) {

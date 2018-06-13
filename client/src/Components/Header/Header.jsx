@@ -11,15 +11,20 @@ const Header = props => {
         <nav className="main-header__nav">
           <ul className="main-header__nav__list">
             <li>
-              <button
-                className="button"
+              <div
+                className="main-header__nav__list__link"
                 onClick={async () => {
                   await attemptUserLogOut();
                   await props.setAuthentication(false, null);
                   props.history.push("/");
                 }}>
                 Log Out
-              </button>
+              </div>
+            </li>
+            <li>
+              <Link className="main-header__nav__list__link" to="/settings">
+                Settings
+              </Link>
             </li>
           </ul>
         </nav>

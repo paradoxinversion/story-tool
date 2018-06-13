@@ -5,7 +5,8 @@ const Person = require("../../classes/Person");
 const PersonSchema = Schema({
   name: String,
   notes: String,
-  age: Number
+  age: Number,
+  createdAt: { type: Date, default: Date.now }
 });
 
 PersonSchema.methods.returnPersonInstance = function(err) {
