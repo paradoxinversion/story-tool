@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
 import getStorySections from "../../../toolCommands/section/getStorySections";
-
+import PropTypes from "prop-types";
 class StorySections extends Component {
   constructor(props) {
     super(props);

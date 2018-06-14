@@ -2,7 +2,29 @@
 
 const addUser = require("../../database/actions/addUser");
 const getUserByName = require("../../database/actions/getUserByName");
+const _deleteUser = require("../../database/actions/deleteUser");
+const _updateUser = require("../../database/actions/updateUser");
 const createWebtoken = require("../../utility/createWebtoken");
+
+const deleteUser = async (req, res) => {
+  try {
+    console.log("USER", req.user);
+    const userDelete = _deleteUser(req.user.user.id);
+    if (userDelete === true) {
+      res.status(200).json({
+        message: "User Deleted"
+      });
+    } else {
+      res.status(200).json({
+        message: "No user was found to delete"
+      });
+    }
+  } catch (e) {
+    res.status(200).json({
+      message: e.message
+    });
+  }
+};
 
 const addNewUser = async (req, res) => {
   try {
@@ -40,6 +62,24 @@ const addNewUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const userUpdate = await _updateUser(
+      req.user.user.username,
+      req.body.username,
+      req.body.password
+    );
+    res.status(200).json({
+      message: "User updated",
+      user: userUpdate
+    });
+  } catch (e) {
+    res.json(e);
+  }
+};
+
 module.exports = {
-  addNewUser
+  addNewUser,
+  deleteUser,
+  updateUser
 };

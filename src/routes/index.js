@@ -12,6 +12,16 @@ router.post("/auth/sign-up", userController.addNewUser);
 router.post("/auth/log-in", passport.authenticate("local"), auth.loggedIn);
 router.get("/auth/check-token", auth.checkToken);
 router
+  .route("/user")
+  .delete(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    userController.deleteUser
+  )
+  .put(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    userController.updateUser
+  );
+router
   .route("/user/stories")
   .get(
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),

@@ -76,6 +76,7 @@ class App extends Component {
             />
             <PrivateRouteAsync
               path="/settings"
+              setAuthentication={this.setAuthentication}
               authenticated={this.state.isAuthenticated}
               checkAuthentication={this.checkClientAuthentication}
               user={this.state.user}
