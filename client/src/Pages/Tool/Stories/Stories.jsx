@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from "react";
 import UserStories from "../../../Components/UserStories/UserStories";
 import getUserStories from "../../../toolCommands/story/getUserStories";

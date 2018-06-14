@@ -11,6 +11,19 @@ const Header = props => {
         <nav className="main-header__nav">
           <ul className="main-header__nav__list">
             <li>
+              <Link
+                className="main-header__nav__list__link"
+                to="/tool/dashboard">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link className="main-header__nav__list__link" to="/settings">
+                Settings
+              </Link>
+            </li>
+
+            <li>
               <div
                 className="main-header__nav__list__link"
                 onClick={async () => {
@@ -20,11 +33,6 @@ const Header = props => {
                 }}>
                 Log Out
               </div>
-            </li>
-            <li>
-              <Link className="main-header__nav__list__link" to="/settings">
-                Settings
-              </Link>
             </li>
           </ul>
         </nav>

@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import deleteStory from "../../../toolCommands/story/deleteStory";

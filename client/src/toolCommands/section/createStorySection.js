@@ -2,6 +2,7 @@ import axiosInstance from "../../axiosInstance";
 import store from "store";
 
 const createStorySection = async (name, content, storyId) => {
+  console.log("Creating section::", name, content, storyId);
   try {
     const result = await axiosInstance.post(
       `/stories/${storyId}/new-section`,

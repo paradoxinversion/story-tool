@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import StoryParts from "../../../Components/StoryParts/StoryParts";
@@ -14,7 +16,7 @@ class StorySections extends Component {
     }
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.getSections();
   }
   render() {

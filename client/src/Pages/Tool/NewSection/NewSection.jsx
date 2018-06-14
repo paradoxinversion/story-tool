@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import createStorySection from "../../../toolCommands/section/createStorySection";
@@ -8,7 +10,7 @@ class NewSection extends Component {
     super(props);
     this.state = {
       name: "",
-      contents: ""
+      content: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,9 +28,10 @@ class NewSection extends Component {
   }
   async handleNewSection(event) {
     event.preventDefault();
+    console.log("Current State::", this.state);
     const result = await createStorySection(
       this.state.name,
-      this.state.conent,
+      this.state.content,
       this.props.workingStory.id
     );
     if (result.status == 200) {
