@@ -24,15 +24,15 @@ const Header = props => {
             </li>
 
             <li>
-              <div
+              <Link
+                to="/"
                 className="main-header__nav__list__link"
                 onClick={async () => {
                   await attemptUserLogOut();
                   await props.setAuthentication(false, null);
-                  props.history.push("/");
                 }}>
                 Log Out
-              </div>
+              </Link>
             </li>
           </ul>
         </nav>
