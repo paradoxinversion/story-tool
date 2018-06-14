@@ -6,7 +6,7 @@ const UserStories = props => {
     return <p>You have not written any stories yet</p>;
   } else {
     return (
-      <div>
+      <div className="story-grid-container">
         {props.stories.map(story => (
           <div
             className="panel panel--horizontal"

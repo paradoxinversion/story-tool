@@ -77,11 +77,11 @@ class Account extends Component {
           onChange={this.handleInputChange}
         />
         <button
-          className="button"
+          className="button button-positive"
           type="submit"
           onClick={this.handleAccountEdit}>
-          {" "}
-          Edit Account{" "}
+          <p className="button__text">Edit Account</p>{" "}
+          <i className="fas fa-user-edit button__icon icon-small" />
         </button>
       </form>
     );
@@ -97,7 +97,7 @@ class Account extends Component {
         ) : null}
         {this.renderForm()}
         <button
-          className="button"
+          className="button button-negative"
           onClick={async () => {
             if (
               window.confirm("Are you sure you wish to delete your account?")
@@ -112,7 +112,8 @@ class Account extends Component {
               }
             }
           }}>
-          Delete Account
+          <p className="button__text">Delete Account</p>{" "}
+          <i className="fas fa-trash button__icon icon-small " />
         </button>
       </div>
     );

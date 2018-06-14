@@ -17,9 +17,12 @@
     const baseURL = window.location.host.includes("localhost")
       ? "http://localhost:3000/"
       : "http://storytool.herokuapp.com/";
-    var script = document.createElement('script');
-    script.src = baseURL + "bundle.js";
-    document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+    const bundleScript = document.createElement('script');
+    bundleScript.src = baseURL + "bundle.js";
+    document.getElementsByTagName('script')[0].parentNode.appendChild(bundleScript);
+    const fontAwesomeScript = document.createElement("script");
+    fontAwesomeScript.src = baseURL + "fontawesome-all.js";
+    document.getElementsByTagName('script')[0].parentNode.appendChild(fontAwesomeScript);
   </script>
   <script></script>
 

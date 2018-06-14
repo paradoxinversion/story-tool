@@ -14,12 +14,12 @@ const Header = props => {
               <Link
                 className="main-header__nav__list__link"
                 to="/tool/dashboard">
-                Dashboard
+                Dashboard <i className="fas fa-keyboard" />
               </Link>
             </li>
             <li>
               <Link className="main-header__nav__list__link" to="/settings">
-                Settings
+                Settings <i className="fas fa-cogs" />
               </Link>
             </li>
 
@@ -31,7 +31,7 @@ const Header = props => {
                   await attemptUserLogOut();
                   await props.setAuthentication(false, null);
                 }}>
-                Log Out
+                Log Out <i className="fas fa-sign-out-alt" />
               </Link>
             </li>
           </ul>
@@ -45,17 +45,17 @@ const Header = props => {
           <ul className="main-header__nav__list">
             <li>
               <Link className="main-header__nav__list__link" to="/">
-                Home
+                Home <i className="fas fa-home" />
               </Link>
             </li>
             <li>
               <Link className="main-header__nav__list__link" to="/auth/signup">
-                Sign Up
+                Sign Up <i className="fas fa-user-plus" />
               </Link>
             </li>
             <li>
               <Link className="main-header__nav__list__link" to="/auth/login">
-                Log In
+                Log In <i className="fas fa-sign-in-alt" />
               </Link>
             </li>
           </ul>

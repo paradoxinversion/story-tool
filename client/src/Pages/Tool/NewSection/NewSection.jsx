@@ -66,11 +66,11 @@ class NewSection extends Component {
               onChange={this.handleInputChange}
             />
             <button
-              className="button"
+              className="button button-positive"
               type="submit"
               onClick={this.handleNewSection}>
-              {" "}
-              Create{" "}
+              <p className="button__text">Create</p>{" "}
+              <i className="fas fa-pencil-alt button__icon icon-small " />
             </button>
           </form>
         </section>

@@ -70,11 +70,12 @@ class NewStory extends Component {
             onChange={this.handleInputChange}
           />
           <button
-            className="button"
+            className="button button-positive"
             type="submit"
             onClick={this.handleNewStory}>
             {" "}
-            Create{" "}
+            <p className="button__text">Create</p>{" "}
+            <i className="fas fa-pencil-alt button__icon" />
           </button>
         </form>
       </div>

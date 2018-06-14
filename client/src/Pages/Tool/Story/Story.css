@@ -11,5 +11,16 @@
 }
 .story__commands {
   width: 100%;
-  /* padding: 0.5rem; */
+  justify-content: center;
+}
+
+.story__commands__command {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 426px) {
+  .story__commands__command {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
 }

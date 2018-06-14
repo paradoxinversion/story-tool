@@ -27,9 +27,19 @@ class Story extends Component {
             <p className="story__synopsis">
               {this.props.workingStory.synopsis}
             </p>
+
             <div className="panel panel--horizontal story__commands">
               <button
-                className="button"
+                className="button button-primary story__commands__command"
+                onClick={() => {
+                  this.props.setMode("story-sections");
+                }}>
+                <i className="fas fa-file-alt icon-medium button__icon" />
+                <i className="fas fa-file-alt icon-medium button__icon" />
+                <i className="fas fa-file-alt icon-medium button__icon" />
+              </button>
+              <button
+                className="button button-negative story__commands__command"
                 onClick={async () => {
                   if (
                     window.confirm(
@@ -46,7 +56,7 @@ class Story extends Component {
                     }
                   }
                 }}>
-                Delete Story
+                <i className="fas fa-trash icon-medium " />
               </button>
             </div>
           </div>
