@@ -7,10 +7,10 @@ import "./Stories.css";
 
 class Stories extends Component {
   async componentDidMount() {
-    if (this.props.user) {
-      const result = await getUserStories(this.props.user.id);
-      await this.props.setStories(result.data.stories);
-    }
+    // if (this.props.user) {
+    //   const result = await getUserStories(this.props.user.id);
+    //   await this.props.setStories(result.data.stories);
+    // }
   }
   render() {
     return (

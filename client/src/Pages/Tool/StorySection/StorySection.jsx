@@ -16,7 +16,8 @@ class StorySection extends Component {
       section: null,
       editing: false,
       name: "",
-      content: ""
+      content: "",
+      characters: []
     };
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,7 +27,7 @@ class StorySection extends Component {
   async getSectionData() {
     const result = await getStorySection(
       this.props.workingStory.id,
-      this.props.workingSection._id
+      this.props.workingSection.id
     );
 
     if (result.status === 200) {
@@ -78,12 +79,12 @@ class StorySection extends Component {
     event.preventDefault();
     // const result = await editStorySection(
     //   this.props.story.id,
-    //   this.props.workingSection._id,
+    //   this.props.workingSection.id,
     //   name,
     //   content
     // );
     const result = await axiosInstance.put(
-      `/stories/${this.props.workingStory.id}/${this.props.workingSection._id}`,
+      `/stories/${this.props.workingStory.id}/${this.props.workingSection.id}`,
       {
         name: this.state.name,
         content: this.state.content
@@ -108,11 +109,13 @@ class StorySection extends Component {
           {this.state.section ? (
             <div className="story">
               <div className="panel panel--horizontal">
-                <button className="button" onClick={this.toggleEditMode}>
+                <button
+                  className="button button--positive"
+                  onClick={this.toggleEditMode}>
                   Edit Part
                 </button>
                 <button
-                  className="button"
+                  className="button button--negative"
                   onClick={async () => {
                     if (
                       window.confirm(
@@ -121,7 +124,7 @@ class StorySection extends Component {
                     ) {
                       const result = await deleteStorySection(
                         this.props.workingStory.id,
-                        this.state.section._id
+                        this.state.section.id
                       );
 
                       if (result.status === 200) {
@@ -132,8 +135,19 @@ class StorySection extends Component {
                   }}>
                   Delete Part
                 </button>
+                <button
+                  className="button button--positive"
+                  onClick={() => {
+                    this.props.setMode("story-sections");
+                  }}>
+                  Back to Parts
+                </button>
               </div>
-
+              <div>
+                <div className="scene-characters">
+                  <p> Characters</p>
+                </div>
+              </div>
               <p className="title">{this.state.section.name}</p>
               <p className="story-section__content">
                 {this.state.section.content}
@@ -175,13 +189,15 @@ class StorySection extends Component {
           />
           <div className="panel">
             <button
-              className="button"
+              className="button button--positive"
               type="submit"
               onClick={this.handleEditSection}>
               {" "}
               Edit{" "}
             </button>
-            <button className="button" onClick={this.toggleEditMode}>
+            <button
+              className="button button--negative"
+              onClick={this.toggleEditMode}>
               {" "}
               Cancel
             </button>

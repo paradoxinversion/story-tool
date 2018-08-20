@@ -1,7 +1,7 @@
 "use strict";
 
-const Story = require("../schema/Story");
-const User = require("../schema/User");
+const Story = require("../../schema/Story");
+const User = require("../../schema/User");
 
 /**
  * Creates a new story associated with a user
@@ -10,7 +10,12 @@ const User = require("../schema/User");
  * @param {string} userId The id of the author
  */
 const addStory = async (title, synopsis, userId) => {
-  console.log("Adding story with info (title, synopsis):: ", title, synopsis);
+  console.log(
+    "Adding story with info (title, synopsis):: ",
+    title,
+    synopsis,
+    userId
+  );
   try {
     const user = await User.findOne({ _id: userId });
     const newStory = new Story({

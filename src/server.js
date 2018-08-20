@@ -6,7 +6,7 @@ const logger = require("morgan");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongooseClient = require("./database/client");
-const getUserByName = require("./database/actions/getUserByName");
+const getUserByName = require("./database/actions/user/getUserByName");
 const User = require("./database/schema/User");
 
 const app = express();

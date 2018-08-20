@@ -77,7 +77,7 @@ class Account extends Component {
           onChange={this.handleInputChange}
         />
         <button
-          className="button button-positive"
+          className="button button--positive"
           type="submit"
           onClick={this.handleAccountEdit}>
           <p className="button__text">Edit Account</p>{" "}
@@ -97,7 +97,7 @@ class Account extends Component {
         ) : null}
         {this.renderForm()}
         <button
-          className="button button-negative"
+          className="button button--negative"
           onClick={async () => {
             if (
               window.confirm("Are you sure you wish to delete your account?")

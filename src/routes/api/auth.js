@@ -1,6 +1,6 @@
 "use strict";
 
-const getUserStories = require("../../database/actions/getUserStories");
+const getUserStories = require("../../database/actions/story/getUserStories");
 const createWebtoken = require("../../utility/createWebtoken");
 const readWebToken = require("../../utility/readWebtoken");
 const User = require("../../database/schema/User");

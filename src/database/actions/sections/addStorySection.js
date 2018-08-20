@@ -1,7 +1,7 @@
 "use strict";
 
-const Story = require("../schema/Story");
-const StorySection = require("../schema/Section");
+const Story = require("../../schema/Story");
+const StorySection = require("../../schema/Section");
 
 /**
  * Creates a section associated with a story
@@ -23,7 +23,8 @@ const addStorySection = async (name, content, storyId) => {
     story.sections.push(newStorySection);
 
     await story.save();
-    return newStorySection;
+    const sectionInstance = newStorySection.returnSectionInstance();
+    return sectionInstance;
   } catch (e) {
     console.log(e);
   }

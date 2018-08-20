@@ -22,7 +22,7 @@ const userSchema = Schema({
 });
 
 userSchema.methods.returnUserInstance = function(err) {
-  return new _User(this.username, this._id, this);
+  return new _User(this.username, this._id, this, this.createdAt);
 };
 
 userSchema.methods.verifyPassword = async function(password) {

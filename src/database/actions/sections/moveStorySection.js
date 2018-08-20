@@ -1,10 +1,10 @@
 "use strict";
 
-const getStorySection = require("../actions/getStorySection");
-const getStorySections = require("../actions/getStorySections");
-const getHighestSectionInStory = require("../actions/getHighestSectionInStory");
-const renumberSections = require("../actions/renumberSections");
-const Section = require("../schema/Section");
+const getStorySection = require("./getStorySection");
+const getStorySections = require("./getStorySections");
+const getHighestSectionInStory = require("./getHighestSectionInStory");
+const renumberSections = require("./renumberSections");
+const Section = require("../../schema/Section");
 
 /**
  * Attempts to trade the section with the supplied sectionId with the section incrementally before or after it
@@ -45,7 +45,10 @@ const moveStorySection = async (storyId, sectionId, makeLater) => {
     const updatedSections = await Section.find({ story: storyId }).sort(
       "number"
     );
-    return updatedSections;
+    const sectionInstances = updatedSections.map(section => {
+      return section.returnSectionInstance();
+    });
+    return sectionInstances;
   } catch (e) {
     console.log(e);
     throw e;

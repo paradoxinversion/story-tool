@@ -30,6 +30,13 @@ class Dashboard extends Component {
               }}>
               New Story
             </button>
+            <button
+              className="dashboard__button"
+              onClick={() => {
+                this.props.setMode("character-pool");
+              }}>
+              Character Pool
+            </button>
           </div>
           {this.props.workingStory ? (
             <div className="dashboard__control-group">
@@ -48,19 +55,22 @@ class Dashboard extends Component {
                   { text: "New Section", mode: "new-section" }
                 ]}
               />
-              {/* <DashboardButton
+              <DashboardButton
                 text="Characters"
                 className="dashboard__button"
                 setMode={this.props.setMode}
-                subButtons={[{ text: "New Character", mode: "new-character" }]}
+                subButtons={[
+                  { text: "New Character", mode: "new-character" },
+                  { text: "Characters", mode: "story-characters" }
+                ]}
               />
-              <DashboardButton
+              {/* <DashboardButton
                 text="Locations"
                 className="dashboard__button"
                 setMode={this.props.setMode}
                 subButtons={[{ text: "New Location", mode: "new-location" }]}
-              />
-              <DashboardButton
+              /> */}
+              {/* <DashboardButton
                 text="Items/Objects"
                 className="dashboard__button"
                 setMode={this.props.setMode}

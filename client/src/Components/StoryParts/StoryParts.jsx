@@ -11,9 +11,9 @@ const StoryParts = props => {
     return (
       <div>
         {props.storyParts.map((section, index, arr) => (
-          <div key={section._id} className="panel panel--horizontal story-part">
+          <div key={section.id} className="panel panel--horizontal story-part">
             <p className="story-part__index">{section.number + 1}</p>
-            <div className="story-part__title" key={section._id}>
+            <div className="story-part__title" key={section.id}>
               {section.name}
             </div>
             <div className="story-part__options">
@@ -21,9 +21,10 @@ const StoryParts = props => {
                 <button
                   className="button button--icon icon-medium story-part__options__item"
                   onClick={async () => {
+                    console.log(section);
                     const result = await moveSection(
                       props.workingStory.id,
-                      section._id,
+                      section.id,
                       false
                     );
 
@@ -42,7 +43,7 @@ const StoryParts = props => {
                   onClick={async () => {
                     const result = await moveSection(
                       props.workingStory.id,
-                      section._id,
+                      section.id,
                       true
                     );
                     if (result.status === 200) {

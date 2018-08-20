@@ -20,7 +20,8 @@ storySchema.methods.returnStoryInstance = function(err) {
     this._id,
     this.title,
     this.synopsis,
-    this.author
+    this.author,
+    this.createdAt
   );
 };
 

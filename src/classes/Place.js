@@ -1,8 +1,8 @@
 "use strict";
 const Base = require("./Base");
 class Place extends Base {
-  constructor(name, id) {
-    super(name, id);
+  constructor(name, id, createdAt) {
+    super(name, id, createdAt);
     this.hardLocation = "";
     this.isRealWorld = false;
   }

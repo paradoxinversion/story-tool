@@ -13,8 +13,8 @@
     "serve": "NODE_ENV=production nodemon ./src/server.js",
     "serve-heroku": "node ./src/server.js",
     "build-client": "cd client && npm run build",
-    "start": "concurrently \"mongod\" \"npm run start-server-dev\" \"npm run start-client-dev\"",
-    "start-debug": "concurrently \"mongod\" \"npm run start-server-debug\" \"npm run start-client-dev\"",
+    "start": "concurrently \"npm run start-server-dev\" \"npm run start-client-dev\"",
+    "start-debug": "concurrently \"npm run start-server-debug\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive",
     "postinstall": "cd client && npm install && npm run build"
   },
@@ -40,6 +40,8 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "store": "^2.0.12"
   },
   "engines": {

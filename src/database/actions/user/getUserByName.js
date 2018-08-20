@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("../schema/User");
+const User = require("../../schema/User");
 
 /**
  * Returns a user by the supplied username, if one exist.

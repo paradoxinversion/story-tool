@@ -1,6 +1,6 @@
 "use strict";
 
-const Story = require("../schema/Story");
+const Story = require("../../schema/Story");
 
 /**
  * Returns a single story with the supplied id

@@ -1,7 +1,7 @@
 "use strict";
 
 const bcrypt = require("bcrypt");
-const User = require("../schema/User");
+const User = require("../../schema/User");
 
 /**
  * Creates a new user

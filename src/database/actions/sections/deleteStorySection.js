@@ -1,6 +1,6 @@
 "use strict";
 
-const Section = require("../schema/Section");
+const Section = require("../../schema/Section");
 
 /**
  * Deletes a section of a story

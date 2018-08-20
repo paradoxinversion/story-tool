@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
-class NewSection extends Component {
+import createCharacter from "../../../toolCommands/character/createCharacter";
+class NewCharacter extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      age: ""
+      age: "",
+      isMainCharacter: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleNewSection = this.handleNewSection.bind(this);
+    this.handleNewCharacter = this.handleNewCharacter.bind(this);
   }
 
   handleInputChange(event) {
@@ -22,44 +24,68 @@ class NewSection extends Component {
       [name]: value
     });
   }
-  async handleNewSection(event) {
+  async handleNewCharacter(event) {
     event.preventDefault();
-    const result = await axiosInstance.post(
-      `/stories/${this.props.story.id}/new-story`,
-      {
-        name: this.state.name,
-        content: this.state.content,
-        storyId: this.props.story.id
-      }
-    );
-    console.log(result);
+    const character = {
+      name: this.state.name,
+      age: this.state.age,
+      isMainCharacter: this.state.isMainCharacter
+    };
+    const storyId =
+      this.props.workingStory !== null ? this.props.workingStory.id : undefined;
 
-    if (result.status === 200) {
-      this.props.history.push("/tool/dashboard");
+    const characterResults = await createCharacter(character, storyId);
+    console.log(characterResults);
+
+    if (characterResults.status === 200) {
+      this.props.setMode("character-pool");
     }
   }
   render() {
     return (
       <Fragment>
-        <form>
-          <p>New Section</p>
-          <label htmlFor="name">Name</label>
+        <form className="vertical-form">
+          <p className="vertical-form__title">New Character</p>
+          <label className="vertical-form__label" htmlFor="name">
+            Name
+          </label>
           <input
+            className="vertical-form__input"
             name="name"
             type="text"
             id="name"
             required={true}
             onChange={this.handleInputChange}
+            value={this.state.name}
           />
-          <label htmlFor="age">Age</label>
+          <label className="vertical-form__label" htmlFor="age">
+            Age
+          </label>
           <input
+            className="vertical-form__input"
             name="age"
             type="text"
             id="age"
             required={true}
             onChange={this.handleInputChange}
+            value={this.state.age}
           />
-          <button type="submit" onClick={this.handleNewSection}>
+          <label className="vertical-form__label" htmlFor="isMainCharacter">
+            Main Character?
+          </label>
+          <input
+            className="vertical-form__input"
+            name="isMainCharacter"
+            type="checkbox"
+            id="isMainCharacter"
+            required={true}
+            onChange={this.handleInputChange}
+            value={this.state.isMainCharacter}
+          />
+          <button
+            className="button button--positive"
+            type="submit"
+            onClick={this.handleNewCharacter}>
             {" "}
             Create{" "}
           </button>
@@ -69,4 +95,4 @@ class NewSection extends Component {
   }
 }
 
-export default withRouter(NewSection);
+export default withRouter(NewCharacter);

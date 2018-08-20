@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+/* Buttons -- Basic*/
 .button {
   display: flex;
   border-radius: 4px;
@@ -10,23 +11,14 @@
   justify-content: center;
 }
 
+/* Buttons -- Elements */
 .button--icon {
   border: none;
   background-color: none;
 }
-.button-primary {
-  background-color: #42b4d0;
-  color: white;
-}
 
-.button-negative {
-  background-color: #fd463b;
-  color: white;
-}
-
-.button-positive {
-  background-color: #1bbb1b;
-  color: white;
+.button__text {
+  align-self: center;
 }
 
 .button__text:not(:only-child) {
@@ -41,14 +33,33 @@
 .button__icon:not(:only-child):not(:last-child) {
   margin-right: 1rem;
 }
+/* Buttons -- Modifiers (Color) */
+.button-primary {
+  background-color: #42b4d0;
+  color: white;
+}
+
+.button--negative {
+  background-color: #fd463b;
+  color: white;
+}
+
+.button--positive {
+  background-color: #1bbb1b;
+  color: white;
+}
+/* Buttons -- Modifiers (Size) */
+.button--medium {
+  font-size: 24px;
+}
+
+/* 
 .icon-small {
   font-size: 16px;
-  /* border: none; */
 }
 .icon-medium {
   font-size: 32px;
-  /* border: none; */
-}
+} */
 
 .App {
   display: flex;

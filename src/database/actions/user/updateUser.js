@@ -1,4 +1,4 @@
-const User = require("../schema/User");
+const User = require("../../schema/User");
 const bcrypt = require("bcrypt");
 const updateUser = async (originalUsername, username, password) => {
   console.log(originalUsername, username, password);
@@ -7,21 +7,19 @@ const updateUser = async (originalUsername, username, password) => {
       const hashedPass = await bcrypt.hash(password, 10);
       const userUpdate = await User.findOneAndUpdate(
         { username: originalUsername.toString() },
-        { username, password: hashedPass },
+        { username, password: hashedPass, isGuest: false },
         { new: true }
       );
-      console.log("UserUpdate::", userUpdate);
-      const userInstance = userUpdate.returnUserInstance();
+      const userInstance = await userUpdate.returnUserInstance();
       return userInstance;
     } else {
       const userUpdate = await User.findOneAndUpdate(
         { username: originalUsername.toString() },
-        { username },
+        { username, isGuest: false },
         { new: true }
       );
-      console.log("UserUpdate::", userUpdate);
 
-      const userInstance = userUpdate.returnUserInstance();
+      const userInstance = await userUpdate.returnUserInstance();
       return userInstance;
     }
   } catch (e) {

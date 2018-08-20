@@ -5,15 +5,14 @@
 .story-part__index {
   font-weight: bold;
   align-self: center;
+  margin: 0;
 }
-.story-part__index::after {
-  content: ".";
-  margin-right: 1rem;
-}
+
 .story-part__title {
   align-self: center;
   font-size: 18px;
   flex-grow: 1;
+  margin-bottom: 0.5rem;
 }
 .story-part__options {
   display: flex;
@@ -26,5 +25,9 @@
 @media (min-width: 600px) {
   .story-part__options {
     flex-direction: row;
+  }
+  .story-part__index::after {
+    content: ".";
+    margin-right: 1rem;
   }
 }

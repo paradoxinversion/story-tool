@@ -22,6 +22,13 @@ class StorySections extends Component {
   render() {
     return (
       <section className="workspace-container">
+        <button
+          className="button button-primary "
+          onClick={() => {
+            this.props.setMode("new-section");
+          }}>
+          New Section
+        </button>
         {this.props.workingSections ? (
           <StoryParts
             setWorkingSection={this.props.setWorkingSection}

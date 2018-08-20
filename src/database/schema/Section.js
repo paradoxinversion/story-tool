@@ -15,11 +15,19 @@ const sectionSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "Story"
   },
+  characters: [{ type: Schema.Types.ObjectId, ref: "Character" }],
   createdAt: { type: Date, default: Date.now }
 });
 
-sectionSchema.methods.returnStoryInstance = function(err) {
-  return new Section(this.name);
+sectionSchema.methods.returnSectionInstance = function(err) {
+  return new Section(
+    this.name,
+    this._id,
+    this.createdAt,
+    this.content,
+    this.number,
+    this.characters
+  );
 };
 
 const SectionModel = mongoose.model("Section", sectionSchema);

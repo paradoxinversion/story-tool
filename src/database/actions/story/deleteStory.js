@@ -1,6 +1,6 @@
 "use strict";
 
-const Story = require("../schema/Story");
+const Story = require("../../schema/Story");
 
 /**
  * Removes a story from the database by its Id

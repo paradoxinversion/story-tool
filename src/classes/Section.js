@@ -1,9 +1,11 @@
 "use strict";
 const Base = require("./Base");
 class Section extends Base {
-  constructor(name, id) {
-    super(name, id);
-    this.content = "";
+  constructor(name, id, createdAt, content, number, characters) {
+    super(name, id, createdAt);
+    this.content = content;
+    this.number = number;
+    this.characters = characters;
   }
 
   setContent(newContent) {

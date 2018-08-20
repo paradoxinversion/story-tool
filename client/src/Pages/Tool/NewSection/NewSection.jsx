@@ -35,7 +35,7 @@ class NewSection extends Component {
       this.props.workingStory.id
     );
     if (result.status == 200) {
-      this.props.setMode("story-overview");
+      this.props.setMode("story-sections");
     }
   }
   render() {
@@ -66,7 +66,7 @@ class NewSection extends Component {
               onChange={this.handleInputChange}
             />
             <button
-              className="button button-positive"
+              className="button button--positive"
               type="submit"
               onClick={this.handleNewSection}>
               <p className="button__text">Create</p>{" "}

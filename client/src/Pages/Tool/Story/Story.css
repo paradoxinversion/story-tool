@@ -5,6 +5,7 @@
 .story__title {
   font-size: 32px;
   font-weight: bold;
+  margin: 0;
 }
 .story__synopsis {
   font-style: italic;

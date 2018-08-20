@@ -4,6 +4,8 @@ import React, { Component, Fragment } from "react";
 
 import { withRouter } from "react-router-dom";
 import createStory from "../../../toolCommands/story/createStory";
+import getUserStories from "../../../toolCommands/story/getUserStories";
+
 class NewStory extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +36,8 @@ class NewStory extends Component {
       this.props.user.id
     );
     if (result.status === 200) {
+      const result = await getUserStories(this.props.user.id);
+      await this.props.setStories(result.data.stories);
       this.props.setMode("stories-list");
     }
   }
@@ -70,7 +74,7 @@ class NewStory extends Component {
             onChange={this.handleInputChange}
           />
           <button
-            className="button button-positive"
+            className="button button--positive"
             type="submit"
             onClick={this.handleNewStory}>
             {" "}

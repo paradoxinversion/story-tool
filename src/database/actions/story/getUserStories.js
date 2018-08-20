@@ -1,6 +1,6 @@
 "use strict";
 
-const Story = require("../schema/Story");
+const Story = require("../../schema/Story");
 
 /**
  * Returns an array of all stories who's author matches the supplied Id

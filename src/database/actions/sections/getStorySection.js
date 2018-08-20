@@ -1,6 +1,6 @@
 "use strict";
 
-const Section = require("../schema/Section");
+const Section = require("../../schema/Section");
 
 /**
  * Returns a single story section with the supplied id.
@@ -10,7 +10,8 @@ const getStorySection = async sectionId => {
   try {
     const section = await Section.findOne({ _id: sectionId });
     if (section) {
-      return section;
+      const sectionInstance = section.returnSectionInstance();
+      return sectionInstance;
     }
   } catch (e) {
     console.log(e);

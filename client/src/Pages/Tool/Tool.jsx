@@ -10,7 +10,10 @@ import NewObject from "./NewObject/NewObject";
 import StorySections from "./StorySections/StorySections";
 import StorySection from "./StorySection/StorySection";
 import NewSection from "./NewSection/NewSection";
-
+import CharacterPool from "./CharacterPool/CharacterPool";
+import StoryCharacters from "./StoryCharacters/StoryCharacters";
+import getUserCharacters from "../../toolCommands/character/getUserCharacters";
+import getUserStories from "../../toolCommands/story/getUserStories";
 const toolComponents = {
   ["stories-list"]: Stories,
   ["new-story"]: NewStory,
@@ -20,7 +23,9 @@ const toolComponents = {
   ["new-object"]: NewObject,
   ["story-sections"]: StorySections,
   ["view-section"]: StorySection,
-  ["new-section"]: NewSection
+  ["new-section"]: NewSection,
+  ["character-pool"]: CharacterPool,
+  ["story-characters"]: StoryCharacters
 };
 class Tool extends Component {
   constructor(props) {
@@ -30,13 +35,15 @@ class Tool extends Component {
       stories: null,
       workingStory: null,
       workingSection: null,
-      workingSections: null
+      workingSections: null,
+      characterPool: null
     };
     this.setMode = this.setMode.bind(this);
     this.setWorkingStory = this.setWorkingStory.bind(this);
     this.setWorkingSection = this.setWorkingSection.bind(this);
     this.setWorkingSections = this.setWorkingSections.bind(this);
     this.setStories = this.setStories.bind(this);
+    this.setCharacterPool = this.setCharacterPool.bind(this);
   }
 
   async setMode(mode) {
@@ -68,7 +75,21 @@ class Tool extends Component {
       workingSections: sections
     });
   }
+  async setCharacterPool(characters) {
+    console.log("chars", characters);
+    await this.setState({
+      characterPool: characters
+    });
+  }
 
+  async componentDidMount() {
+    const storyData = await Promise.all([
+      getUserStories(this.props.user.id),
+      getUserCharacters()
+    ]);
+    this.setStories(storyData[0].data.stories);
+    this.setCharacterPool(storyData[1].data.characters);
+  }
   render() {
     const CurrentWorkspace = toolComponents[this.state.mode];
     const { match } = this.props;
@@ -89,6 +110,8 @@ class Tool extends Component {
           workingSection={this.state.workingSection}
           workingSections={this.state.workingSections}
           setWorkingSections={this.setWorkingSections}
+          setCharacterPool={this.setCharacterPool}
+          characterPool={this.state.characterPool}
           setMode={this.setMode}
           {...this.props}
         />

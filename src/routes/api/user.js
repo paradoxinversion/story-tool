@@ -1,9 +1,9 @@
 "use strict";
 
-const addUser = require("../../database/actions/addUser");
-const getUserByName = require("../../database/actions/getUserByName");
-const _deleteUser = require("../../database/actions/deleteUser");
-const _updateUser = require("../../database/actions/updateUser");
+const addUser = require("../../database/actions/user/addUser");
+const getUserByName = require("../../database/actions/user/getUserByName");
+const _deleteUser = require("../../database/actions/user/deleteUser");
+const _updateUser = require("../../database/actions/user/updateUser");
 const createWebtoken = require("../../utility/createWebtoken");
 
 const deleteUser = async (req, res) => {
@@ -47,7 +47,7 @@ const addNewUser = async (req, res) => {
       if (!existingUser) {
         await addUser(req.body.username, req.body.password, req.body.isGuest);
 
-        res.status(200).json({
+        res.status(201).json({
           message: "New Standard User added"
         });
       } else {

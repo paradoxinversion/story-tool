@@ -7,10 +7,14 @@ const router = express.Router();
 const auth = require("./api/auth");
 const userController = require("./api/user");
 const storyController = require("./api/story");
+const characterController = require("./api/character");
 
+// Auth
 router.post("/auth/sign-up", userController.addNewUser);
 router.post("/auth/log-in", passport.authenticate("local"), auth.loggedIn);
 router.get("/auth/check-token", auth.checkToken);
+
+// Users
 router
   .route("/user")
   .delete(
@@ -28,6 +32,7 @@ router
     storyController.getUserStories
   );
 
+// Stories
 router
   .route("/stories/:storyId")
   .get(
@@ -39,6 +44,7 @@ router
     storyController.deleteStory
   );
 
+// Story Sections
 router
   .route("/stories/:storyId/new-section")
   .post(
@@ -80,5 +86,23 @@ router
     jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
     storyController.createStory
   );
-
+// Characters
+router
+  .route("/characters")
+  .get(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    characterController.getCharacters
+  )
+  .post(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    characterController.createCharacter
+  )
+  .put(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    characterController.updateCharacter
+  )
+  .delete(
+    jwt({ secret: process.env.JWT_SECRET || "dEvMoDe!1" }),
+    characterController.deleteCharacter
+  );
 module.exports = router;

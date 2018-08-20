@@ -1,6 +1,6 @@
 "use strict";
 
-const Story = require("../schema/Story");
+const Story = require("../../schema/Story");
 
 /**
  * Gets all stories created by a user

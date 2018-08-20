@@ -1,6 +1,6 @@
 "use strict";
 
-const Section = require("../schema/Section");
+const Section = require("../../schema/Section");
 
 /**
  * Renumbers all sections from 0 to the total amount of sections in a story.

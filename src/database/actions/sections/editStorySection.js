@@ -1,6 +1,6 @@
 "use strict";
 
-const Section = require("../schema/Section");
+const Section = require("../../schema/Section");
 
 /**
  *  Edits a story section's name, content or both.
@@ -15,7 +15,8 @@ const editStorySection = async (name, content, sectionId) => {
     section.name = name;
     section.content = content;
     section.save();
-    return section;
+    const sectionInstance = section.returnSectionInstance();
+    return sectionInstance;
   }
 };
 
