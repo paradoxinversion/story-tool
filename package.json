@@ -12,7 +12,7 @@
     "start-server-debug": "nodemon  --inspect ./src/server.js --watch src/ ",
     "serve": "NODE_ENV=production nodemon ./src/server.js",
     "serve-heroku": "node ./src/server.js",
-    "build-client": "parcel build ./client/public/index.html",
+    "build-client": "parcel build ./client/public/index.html --no-cache",
     "start": "concurrently \"npm run start-server-dev\" \"npm run start-client-dev\"",
     "start-debug": "concurrently \"npm run start-server-debug\" \"npm run start-client-dev\"",
     "test": "mocha --reporter spec --recursive",
