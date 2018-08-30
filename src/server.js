@@ -59,9 +59,9 @@ app.use(function(req, res, next) {
 app.use("/api", index);
 
 if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.resolve(__dirname, "..", "client/dist")));
+  app.use("/", express.static(path.resolve(__dirname, "..", "dist")));
   app.get("*", function(req, res) {
-    res.sendFile(path.resolve(__dirname, "..", "client/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, "..", "dist/index.html"));
   });
 }
 
