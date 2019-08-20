@@ -43,7 +43,17 @@ This project is _currently_ set up to be deployed on heroku.
 
 ## API Reference
 
-Coming Soon
+### AuthN/AuthZ
+`/auth/sign-up` (Post)
+`/auth/log-in` (Post)
+`/auth/check-token` (Get)
+
+### Users
+`/user` (Put, Delete)
+`/user/stories` (Get)
+
+### Stories
+`/stories/:storyId` (Get, Delete)
 
 ## License
 

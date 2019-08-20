@@ -14,6 +14,7 @@ const attemptUserLogIn = async (username, password) => {
         }
       }
     );
+    console.log("result", result);
     return result;
   } catch (e) {
     console.log(e);

@@ -28,37 +28,52 @@ const deleteUser = async (req, res) => {
 
 const addNewUser = async (req, res) => {
   try {
+    if (!req.body.username || !req.body.password) {
+      const error = new Error("Requires username and password");
+      throw error;
+    }
     if (req.body.isGuest === true) {
       const rawGuestUser = await addUser(
         req.body.username,
         req.body.password,
         req.body.isGuest
       );
-      const guestUser = rawGuestUser.returnUserInstance();
-      const guestToken = createWebtoken(guestUser);
+      const user = rawGuestUser.returnUserInstance();
+      const token = createWebtoken(user);
 
       res.status(200).json({
         message: "New Guest User added",
-        token: guestToken,
-        user: guestUser
+        token,
+        user
       });
     } else {
       const existingUser = await getUserByName(req.body.username);
       if (!existingUser) {
-        await addUser(req.body.username, req.body.password, req.body.isGuest);
+        const rawNewUser = await addUser(
+          req.body.username,
+          req.body.password,
+          req.body.isGuest
+        );
+        const user = rawNewUser.returnUserInstance();
+        const token = createWebtoken(user);
 
         res.status(201).json({
-          message: "New Standard User added"
+          message: "New Standard User added",
+          user,
+          token
         });
       } else {
         res.status(409).json({
-          message: "User Already Exists"
+          message: "User Already Exists",
+          user: null,
+          token: null
         });
       }
     }
   } catch (e) {
     console.log("Error adding user::", e);
-    res.json(e);
+    console.log("ARG");
+    res.status(400).json({ error: e.message });
   }
 };
 
